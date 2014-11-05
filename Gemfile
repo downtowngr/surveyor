@@ -10,13 +10,15 @@ gem 'turbolinks'
 
 gem "nationbuilder-rb", require: "nationbuilder"
 gem "twilio-ruby"
+gem "pry-rails"
+
+group :test do
+  gem "rspec-rails"
+  gem "database_cleaner"
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
