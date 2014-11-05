@@ -8,7 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 
-gem "nationbuilder-rb"
+gem "nationbuilder-rb", require: "nationbuilder"
 gem "twilio-ruby"
 
 # Use ActiveModel has_secure_password
