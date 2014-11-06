@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem "nationbuilder-rb", require: "nationbuilder"
 gem "twilio-ruby"
 gem "pry-rails"
+gem "rails_admin"
 
 group :test do
   gem "rspec-rails"
