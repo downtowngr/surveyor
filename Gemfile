@@ -23,11 +23,11 @@ group :development do
 end
 
 group :test do
-  gem "rspec-rails"
-  gem "database_cleaner"
   gem "codeclimate-test-reporter", require: nil
 end
 
 group :development, :test do
+  gem "rspec-rails"
+  gem "database_cleaner"
   gem "byebug", require: false
 end
