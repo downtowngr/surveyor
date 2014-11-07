@@ -1,2 +1,1 @@
-$nb = NationBuilder::Client.new(Rails.application.secrets.nb_nation_name,
-                                Rails.application.secrets.nb_api_token)
+$nb = NationBuilder::Client.new(Figaro.env.nb_nation_name, Figaro.env.nb_api_token)
