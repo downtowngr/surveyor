@@ -1,3 +1,5 @@
 language: ruby
 rvm:
   - 2.1.1
+env:
+  - twilio_account_sid=SOME_SID twilio_auth_token=SOME_TOKEN nb_nation_name=NBNATION nb_api_token=SOME_OTHER_TOKEN
