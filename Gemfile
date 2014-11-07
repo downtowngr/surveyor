@@ -13,13 +13,19 @@ gem "twilio-ruby"
 gem "pry-rails"
 gem "rails_admin"
 
+group :development do
+  gem "guard", require: false
+  gem "guard-bundler", require: false
+  gem "guard-rspec", require: false
+  gem "guard-rails", require: false
+  gem "terminal-notifier-guard", require: false
+end
+
 group :test do
   gem "rspec-rails"
   gem "database_cleaner"
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
+group :development, :test do
+  gem "byebug", require: false
+end
