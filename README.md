@@ -1,5 +1,8 @@
 # Surveyor
 
+[![Build Status](https://img.shields.io/travis/downtowngr/surveyor/master.svg?style=flat-square)](https://travis-ci.org/downtowngr/surveyor)
+[![Code Climate](http://img.shields.io/codeclimate/github/downtowngr/surveyor.svg?style=flat-square)](https://codeclimate.com/github/downtowngr/surveyor)
+[![Test Coverage](http://img.shields.io/codeclimate/coverage/github/downtowngr/surveyor.svg?style=flat-square)](https://codeclimate.com/github/downtowngr/surveyor)
 
 ## What does Surveyor want to be?
 
@@ -28,7 +31,7 @@ The data collected in Surveyor will be synced with DGRI's CRM, Nationbuilder.
 * User check-ins are tracked.
 
 ### Feedback
-* A user can text in a keyword (or perhaps hashtag?) with other information. 
+* A user can text in a keyword (or perhaps hashtag?) with other information.
 * An administrator can set a follow up question to a keyword.
 
 ### Suggestion Line
