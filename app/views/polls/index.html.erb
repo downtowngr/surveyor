@@ -1,14 +1,20 @@
 <h1>Polls</h1>
 
-<%= link_to 'Create Poll', new_poll_path %>
-
 <table>
+  <thead>
+  	<th></th>
+  	<th></th>
+  	<th></th>
+  	<th></th>
+  </thead>
   <% @polls.each do |poll| %>
     <tr>
       <td><%= link_to poll.name, poll %></td>
       <td><%= poll.description %></td>
+      <td><%= poll.start_date.to_formatted_s(:MON_DAY) %></td>
+      <td><%= poll.end_date.to_formatted_s(:MON_DAY) %></td>
     </tr>
   <% end %>
 </table>
 
-
+<%= link_to 'Create Poll', new_poll_path %>

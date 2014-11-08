@@ -25,7 +25,15 @@ module Surveyor
     end
 
     config.to_prepare do
-      Devise::SessionsController.layout "authentication" 
+      Devise::SessionsController.layout "authentication"
     end
+
+    # Add the fonts path
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+    # Precompile additional assets
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
+
   end
 end
+

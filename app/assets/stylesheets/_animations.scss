@@ -1,19 +1,43 @@
-@-moz-keyframes slideupnback {
-	from {
-		top: -8em;
+@-moz-keyframes slide {
+	0% {
+		opacity: 0;
+		left: -5em;
 	}
 
-	to {
-		top: 1em;
+	15% {
+		opacity: 1;
+		left: 1em;
+	}
+
+	85% {
+		opacity: 1;
+		left: 1em;
+	}
+
+	100% {
+		opacity: 0;
+		left: -5em;
 	}
 }
 
-@-webkit-keyframes slideupnback {
-	from {
-		top: -8em;
+@-webkit-keyframes slide {
+	0% {
+		opacity: 0;
+		left: -5em;
 	}
 
-	to {
-		top: 1em;
+	15% {
+		opacity: 1;
+		left: 1em;
+	}
+
+	85% {
+		opacity: 1;
+		left: 1em;
+	}
+
+	100% {
+		opacity: 0;
+		left: -5em;
 	}
 }
