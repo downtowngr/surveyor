@@ -29,6 +29,24 @@ CodeClimate::TestReporter.start
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include Devise::TestHelpers, type: :controller
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+  
+  config.before(:each, type: :controller) do
+    admin = User.create!(email: 'admin@downtowngr.org', password: 'password', password_confirmation: 'password')
+    sign_in admin
+  end
+  
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

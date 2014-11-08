@@ -1,3 +1,7 @@
+<h1>Polls</h1>
+
+<%= link_to 'Create Poll', new_poll_path %>
+
 <table>
   <%- @polls.each do |poll| %>
     <tr>
@@ -7,4 +11,4 @@
   <% end %>
 </table>
 
-<%= link_to 'Create Poll', new_poll_path %>
+
