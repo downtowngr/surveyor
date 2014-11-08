@@ -5,6 +5,7 @@ class DispatchController < ApiController
 
     if response_word_list.size == 1
       keyword = response_word_list[0].downcase
+      text.keyword = keyword
     elsif response_word_list.size > 1
       response_text = "Sorry, I don't understand that. Try sending only one word."
     else
@@ -12,11 +13,12 @@ class DispatchController < ApiController
     end
 
     unless response_text
-      dispatch = Dispatch.where(keyword: keyword)
-      if dispatch.empty?
+      binding.pry
+      dispatch = Dispatch.find_by(keyword: keyword)
+      if dispatch.present?
         response_text = "Sorry, I don't know that option."
       else
-        response_text = eval("#{dispatch.klass}.create(text)")
+        response_text = dispatch.process_text(text)
       end
     end
 

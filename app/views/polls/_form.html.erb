@@ -7,5 +7,7 @@
   <%= f.date_select :start_date %>
   <%= f.label :end_date %>
   <%= f.date_select :end_date %>
+  <%= f.label :strategy %>
+  <%= f.select :strategy, options_for_select(Poll::VOTING_STRATEGIES) %>
   <%= f.submit %>
 <% end %>

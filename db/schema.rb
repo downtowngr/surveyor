@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108154906) do
+ActiveRecord::Schema.define(version: 20141108194931) do
 
   create_table "citizens", force: true do |t|
     t.string   "phone_number"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20141108154906) do
 
   create_table "dispatches", force: true do |t|
     t.string   "keyword"
-    t.string   "klass"
+    t.integer  "poll_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20141108154906) do
     t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "strategy"
   end
 
   create_table "users", force: true do |t|
