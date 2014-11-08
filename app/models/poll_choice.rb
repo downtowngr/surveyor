@@ -1,3 +1,3 @@
 class PollChoice < ActiveRecord::Base
-  belongs_to :polls
+  belongs_to :poll
 end

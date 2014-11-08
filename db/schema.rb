@@ -27,14 +27,14 @@ ActiveRecord::Schema.define(version: 20141108154906) do
   end
 
   create_table "poll_choices", force: true do |t|
-    t.integer  "polls_id"
+    t.integer  "poll_id"
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "poll_choices", ["polls_id"], name: "index_poll_choices_on_polls_id"
+  add_index "poll_choices", ["poll_id"], name: "index_poll_choices_on_poll_id"
 
   create_table "polls", force: true do |t|
     t.string   "name"

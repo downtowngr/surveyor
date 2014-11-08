@@ -1,0 +1,7 @@
+<h1>Choices for <%= @poll.name %></h1>
+
+<ul>
+  <% @poll_choices.each do |poll_choice| %>
+    <li><%= link_to poll_choice, poll_choice.name %></li>
+  <% end %>
+</ul>

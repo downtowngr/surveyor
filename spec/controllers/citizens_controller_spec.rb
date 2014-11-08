@@ -5,7 +5,7 @@ RSpec.describe CitizensController, type: :controller do
   
   describe "GET index" do
     it "assigns all citizens" do
-      citizen = Citizen.create(phone_number: valid_phone_number)
+      citizen = Citizen.create!(phone_number: valid_phone_number)
       get :index
       expect(assigns(:citizens).all).to eq([citizen])
     end
