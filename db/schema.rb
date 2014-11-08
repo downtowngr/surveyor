@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108140408) do
+ActiveRecord::Schema.define(version: 20141108154906) do
+
+  create_table "dispatches", force: true do |t|
+    t.string   "keyword"
+    t.string   "klass"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "keywords", force: true do |t|
     t.string   "string"
