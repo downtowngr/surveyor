@@ -2,8 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "variables";
+@import "utilities";
+@import "animations";
 
-
+body {
+	margin: 0;
+}
 
 #menu_bar li {
 	list-style: none;
@@ -15,10 +20,73 @@
 	/*border:  solid 1px;*/
 	float:  right;
 	font-size:  16px;
-	display  :inline;
+	display: inline;
 }
 
 ul.list-inline {
- list-style:  none;
- display:inline;
+	list-style:  none;
+	float: right;
+
+	li {
+		display: inline;
+	}
 }
+
+nav {
+	background: $c-cosmic-latte;
+
+	.nav-item {
+		display: inline-block;
+		padding: 1em 0;
+	}
+}
+
+.nav-wrap {
+	width: $v-page-width;
+	margin: 0 auto;
+}
+
+#yield {
+	width: $v-page-width;
+	margin: 0 auto;
+}
+
+.notice {
+    background: green;
+    padding: 1em;
+    position: absolute;
+    opacity: 0;
+	left: -5em;
+    top: 1em;
+
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: slide;
+    -moz-animation-name: slide;
+  	animation-name: slide;
+
+}
+
+@-webkit-keyframes slide {
+	0% {
+		opacity: 0;
+		left: -5em;
+	}
+
+	15% {
+		opacity: 1;
+		left: 1em;
+	}
+
+	85% {
+		opacity: 1;
+		left: 1em;
+	}
+
+	100% {
+		opacity: 0;
+		left: -5em;
+	}
+}
+
