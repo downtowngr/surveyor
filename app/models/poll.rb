@@ -5,4 +5,5 @@ class Poll < ActiveRecord::Base
   has_many :dispatches
   
   validates :name, presence: true
+  validates :strategy, presence: true
 end
