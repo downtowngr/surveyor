@@ -13,12 +13,11 @@ class DispatchController < ApiController
     end
 
     unless response_text
-      binding.pry
       dispatch = Dispatch.find_by(keyword: keyword)
       if dispatch.present?
-        response_text = "Sorry, I don't know that option."
-      else
         response_text = dispatch.process_text(text)
+      else
+        response_text = "Sorry, I don't know that option."
       end
     end
 
