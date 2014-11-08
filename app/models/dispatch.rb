@@ -4,7 +4,7 @@ class Dispatch < ActiveRecord::Base
   validates :keyword, presence: true
 
   def process_text(text)
-    Object.get_constant(poll.strategy).process_text(poll, text)
+    poll.strategy.constantize.process_text(poll, text)
   end
 end
 
