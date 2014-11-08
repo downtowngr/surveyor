@@ -7,7 +7,7 @@ RSpec.describe CitizensController, type: :controller do
     it "assigns all citizens" do
       citizen = Citizen.create(phone_number: valid_phone_number)
       get :index
-      expect(assigns(:citizens)).to eq([citizen])
+      expect(assigns(:citizens).all).to eq([citizen])
     end
 
     it "renders the index template" do
