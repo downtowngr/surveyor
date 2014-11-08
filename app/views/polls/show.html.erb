@@ -1,0 +1,8 @@
+<%= @poll.name %>
+<%= @poll.description %>
+
+<p>
+  <%= link_to 'Edit', edit_poll_path(@poll) %>
+  <%= link_to 'Delete', poll_path(@poll), method: :delete, data: {confirm: 'Are you sure?'} %>
+  <%= link_to 'All Polls', polls_path %>
+</p>

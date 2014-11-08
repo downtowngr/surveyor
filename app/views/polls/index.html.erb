@@ -1,0 +1,10 @@
+<table>
+  <%- @polls.each do |poll| %>
+    <tr>
+      <td><%= link_to poll.name, poll_path(poll) %></td>
+      <td><%= poll.description %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Create Poll', new_poll_path %>

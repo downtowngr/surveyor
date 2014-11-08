@@ -14,6 +14,8 @@ gem "twilio-ruby"
 gem "pry-rails"
 gem "figaro"
 
+gem "simple_form"
+
 group :development do
   gem "guard", require: false
   gem "guard-bundler", require: false
