@@ -3,3 +3,5 @@ rvm:
   - 2.1.3
 env:
   - twilio_account_sid=asdf twilio_auth_token=asdf nb_nation_name=asdf nb_api_token=asdf
+addons:
+  postgresql: "9.3"
