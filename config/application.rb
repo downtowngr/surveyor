@@ -23,5 +23,9 @@ module Surveyor
       g.stylesheets = false
       g.javascripts = false
     end
+
+    config.to_prepare do
+      Devise::SessionsController.layout "authentication" 
+    end
   end
 end
