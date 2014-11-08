@@ -1,0 +1,24 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+#menu_bar li {
+	list-style: none;
+	display: inline-block;
+	padding: 10px; width:80px;
+}
+
+#user_info  {
+	/*border:  solid 1px;*/
+	float:  right;
+	font-size:  16px;
+	display  :inline;
+}
+
+ul.list-inline {
+ list-style:  none;
+ display:inline;
+}
