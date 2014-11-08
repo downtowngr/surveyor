@@ -26,27 +26,27 @@ ActiveRecord::Schema.define(version: 20141108154906) do
     t.datetime "updated_at"
   end
 
-  create_table "keywords", force: true do |t|
-    t.string   "string"
+  create_table "citizens", force: true do |t|
+    t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "poll_choices", force: true do |t|
-    t.integer  "poll_id"
-    t.integer  "vote_count"
-    t.integer  "keyword_id"
+    t.integer  "polls_id"
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "poll_choices", ["polls_id"], name: "index_poll_choices_on_polls_id"
+
   create_table "polls", force: true do |t|
     t.string   "name"
-    t.datetime "voting_starts"
-    t.datetime "voting_ends"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "polling_strategy"
   end
 
   create_table "users", force: true do |t|
