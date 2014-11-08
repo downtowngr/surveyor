@@ -26,9 +26,10 @@ class DispatchController < ApiController
   def process_keyword
     # No need to do this if response_text is already set
     unless @response_text
-      dispatch = Dispatch.find_by(keyword: @text.keyword)
+      dispatch = Dispatch.find_by(keyword: @text.keyword.upcase)
       if dispatch.present?
-        @response_text = dispatch.process_text(@text)
+        dispatch.process_text(@text)
+        @response_text = "It's alive!"
       else
         @response_text = "Sorry, I don't know that option."
       end
