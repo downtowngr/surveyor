@@ -33,4 +33,5 @@ group :development, :test do
   gem "database_cleaner"
   gem "byebug", require: false
   gem "faker"
+  gem "factory_girl_rails"
 end
