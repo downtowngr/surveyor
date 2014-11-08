@@ -37,7 +37,6 @@ class PollsController < ApplicationController
 
   def destroy
     @poll.destroy
-
     redirect_to polls_path
   end
 
@@ -48,6 +47,6 @@ class PollsController < ApplicationController
   end
 
   def poll_params
-    params.require(:poll).permit(:name, :description)
+    params.require(:poll).permit(:name, :description, :start_date, :end_date)
   end
 end

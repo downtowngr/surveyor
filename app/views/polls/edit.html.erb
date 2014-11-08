@@ -1,5 +1,2 @@
-<%= simple_form_for @poll do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.button :submit %>
-<% end %>
+<h1>Edit <%= @poll.name %></h1>
+<%= render 'form' %>
