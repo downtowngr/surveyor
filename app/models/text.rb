@@ -16,4 +16,8 @@ class Text
     @from = params["From"]
     @body = params["Body"]
   end
+
+  def number
+    from
+  end
 end

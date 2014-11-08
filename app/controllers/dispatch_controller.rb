@@ -12,6 +12,9 @@ class DispatchController < ApiController
       logger.info "Response contained no words."
     end
 
+    listening_state = ListeningState.where(number: text.number) 
+    
+
     unless response_text
       dispatch = Dispatch.find_by(keyword: keyword)
       if dispatch.present?
