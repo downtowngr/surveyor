@@ -47,6 +47,6 @@ class PollsController < ApplicationController
   end
 
   def poll_params
-    params.require(:poll).permit(:name, :description, :start_date, :end_date)
+    params.require(:poll).permit(:name, :description, :start_date, :end_date, :strategy)
   end
 end

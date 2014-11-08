@@ -1,0 +1,7 @@
+<h1>Dispatches</h1>
+
+<ul>
+  <% @dispatches.each do |dispatch| %>
+    <li><%= dispatch.keyword %> - <%= dispatch.poll.name %></li>
+  <% end  %>
+</ul>

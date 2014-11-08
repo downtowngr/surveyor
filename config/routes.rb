@@ -9,5 +9,6 @@ Rails.application.routes.draw do
       resources :poll_choices
     end
     resources :citizens
+    resources :dispatches, only: [:index]
   end
 end
