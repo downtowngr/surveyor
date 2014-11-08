@@ -26,12 +26,6 @@ ActiveRecord::Schema.define(version: 20141108154906) do
     t.datetime "updated_at"
   end
 
-  create_table "citizens", force: true do |t|
-    t.string   "phone_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "poll_choices", force: true do |t|
     t.integer  "polls_id"
     t.string   "name"
@@ -45,6 +39,8 @@ ActiveRecord::Schema.define(version: 20141108154906) do
   create_table "polls", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

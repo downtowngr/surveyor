@@ -81,7 +81,6 @@ GEM
     guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
-    high_voltage (2.2.1)
     hike (1.2.3)
     hitimes (1.2.2)
     httpclient (2.4.0)
@@ -162,9 +161,6 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 2.12)
       sprockets-rails (~> 2.0)
-    simple_form (3.0.2)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
     simplecov (0.9.1)
       docile (~> 1.1.0)
       multi_json (~> 1.0)
@@ -217,7 +213,6 @@ DEPENDENCIES
   guard-bundler
   guard-rails
   guard-rspec
-  high_voltage
   jquery-rails
   nationbuilder-rb
   pg
@@ -225,7 +220,6 @@ DEPENDENCIES
   rails (= 4.1.7)
   rspec-rails
   sass-rails (~> 4.0.3)
-  simple_form
   sqlite3
   terminal-notifier-guard
   turbolinks
