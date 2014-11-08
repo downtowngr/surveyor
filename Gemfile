@@ -33,6 +33,5 @@ group :development, :test do
   gem "rspec-rails"
   gem "database_cleaner"
   gem "byebug", require: false
-  gem "sqlite3"
   gem "faker"
 end
