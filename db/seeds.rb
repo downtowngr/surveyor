@@ -1,11 +1,14 @@
-{ost: "PollChoiceController", dgri: "PollChoiceController"}.map do |k, v|
-  Dispatch.create(keyword: k, klass: v)
+unless Rails.env.production?
+  User.destroy_all
+  User.create(email: 'admin@downtowngr.org', password: 'password', password_confirmation: 'password')
+
+  Dispatch.destroy_all
+  {Post: "PollChoiceController", dgri: "PollChoiceController"}.map do |k, v|
+    Dispatch.create(keyword: k, klass: v)
+  end
 end
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+
+                                                           
