@@ -81,7 +81,6 @@ GEM
     guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
-    high_voltage (2.2.1)
     hike (1.2.3)
     hitimes (1.2.2)
     httpclient (2.4.0)
@@ -214,7 +213,6 @@ DEPENDENCIES
   guard-bundler
   guard-rails
   guard-rspec
-  high_voltage
   jquery-rails
   nationbuilder-rb
   pg
