@@ -13,6 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20141108154906) do
 
+  create_table "citizens", force: true do |t|
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "dispatches", force: true do |t|
     t.string   "keyword"
     t.string   "klass"
@@ -60,5 +66,15 @@ ActiveRecord::Schema.define(version: 20141108154906) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "votes", force: true do |t|
+    t.integer  "poll_choice_id"
+    t.integer  "citizen_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["citizen_id"], name: "index_votes_on_citizen_id"
+  add_index "votes", ["poll_choice_id"], name: "index_votes_on_poll_choice_id"
 
 end
