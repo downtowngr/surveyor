@@ -162,9 +162,6 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 2.12)
       sprockets-rails (~> 2.0)
-    simple_form (3.0.2)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
     simplecov (0.9.1)
       docile (~> 1.1.0)
       multi_json (~> 1.0)
@@ -225,7 +222,6 @@ DEPENDENCIES
   rails (= 4.1.7)
   rspec-rails
   sass-rails (~> 4.0.3)
-  simple_form
   sqlite3
   terminal-notifier-guard
   turbolinks
