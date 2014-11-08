@@ -13,6 +13,7 @@ gem "nationbuilder-rb", require: "nationbuilder"
 gem "twilio-ruby"
 gem "pry-rails"
 gem "figaro"
+gem "attribute_normalizer"
 
 gem "simple_form"
 
@@ -33,4 +34,5 @@ group :development, :test do
   gem "database_cleaner"
   gem "byebug", require: false
   gem "sqlite3"
+  gem "faker"
 end
