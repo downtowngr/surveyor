@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'devise'
 
 gem "nationbuilder-rb", require: "nationbuilder"
 gem "twilio-ruby"
@@ -29,4 +30,5 @@ group :development, :test do
   gem "rspec-rails"
   gem "database_cleaner"
   gem "byebug", require: false
+  gem "sqlite3"
 end
