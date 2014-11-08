@@ -11,7 +11,6 @@ gem 'turbolinks'
 gem "nationbuilder-rb", require: "nationbuilder"
 gem "twilio-ruby"
 gem "pry-rails"
-gem "rails_admin"
 gem "figaro"
 
 group :development do
