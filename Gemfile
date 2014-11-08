@@ -14,7 +14,6 @@ gem "twilio-ruby"
 gem "pry-rails"
 gem "figaro"
 gem "attribute_normalizer"
-gem "simple_form"
 gem "high_voltage"
 
 group :development do
