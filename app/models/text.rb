@@ -10,6 +10,7 @@ Written by Conor Livingston, GR GiveCamp 2014
 
 class Text
   attr_reader :body, :from
+  attr_accessor :keyword
 
   def initialize(params)
     @from = params["From"]

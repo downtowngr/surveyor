@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :poll_choice do
-    sequence(:name) { |n| "Poll Chocie #{n}" }
+    sequence(:name) { |n| "choice#{n}" }
+    poll
   end
 end

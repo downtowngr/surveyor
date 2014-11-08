@@ -1,15 +1,10 @@
 class Dispatch < ActiveRecord::Base
+  belongs_to :poll
 
-  def self.keywords_to_klasses
-    
-    keyword_to_klass_hash  = {}
+  validates :keyword, presence: true
 
-    self.all.each do |dispatch|
-      keyword_to_klass_hash[dispatch.keyword] = dispatch.klass 
-    end
-    
-    keyword_to_klass_hash
+  def process_text(text)
+    Object.get_constant(poll.strategy).process_text(poll, text)
   end
-
 end
 
