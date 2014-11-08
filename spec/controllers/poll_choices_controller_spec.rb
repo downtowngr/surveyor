@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PollChoicesController, type: :controller do
-  let(:poll) { Poll.create(name: "Valid Poll") }
+  let(:poll) { create(:poll) }
   
   describe "GET index" do
     it "assigns all choices for this post" do
@@ -33,8 +33,11 @@ RSpec.describe PollChoicesController, type: :controller do
 
   describe "POST create" do
     it "creates a new poll choice under the active poll" do
-      
+      expect { post :create, poll_id: poll.id, poll_choice: attributes_for(:poll_choice) }.to change { poll.poll_choices.count }.by(1)
+    end
+
+    it "redirects to the Poll show page" do
+      expect { post :create, poll_id: poll.id, poll_choice: attributes_for(:poll_choice) }.to redirect_to(post_path(post))
     end
   end
-
 end

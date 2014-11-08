@@ -13,7 +13,7 @@ class PollChoicesController < ApplicationController
   def create
     @poll_choice = @poll.poll_choices.new(poll_choice_params)
     @poll_choice.save!
-    redirect_to [@poll, @poll_choice]
+    redirect_to @poll, @poll_choice
   end
 
   def edit
