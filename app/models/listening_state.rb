@@ -1,5 +1,8 @@
 class ListeningState < ActiveRecord::Base
-  def trigger
+  def self.trigger
 
+    eval "#{self.klass}.run(#{self.event})"
+ 
   end
 end
+

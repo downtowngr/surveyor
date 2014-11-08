@@ -20,4 +20,14 @@ class Text
   def number
     from
   end
+
+  def word_array
+    body.split(" ")
+  end
+
+  # There will only be a keyword if the 
+  # the word array is size one.
+  def keyword
+    word_array.size == 1 ? word_array.first : nil
+  end
 end
