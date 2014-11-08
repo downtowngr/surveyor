@@ -37,7 +37,7 @@ RSpec.describe PollChoicesController, type: :controller do
     end
 
     it "redirects to the Poll show page" do
-      expect { post :create, poll_id: poll.id, poll_choice: attributes_for(:poll_choice) }.to redirect_to(post_path(post))
+      expect(post :create, poll_id: poll.id, poll_choice: attributes_for(:poll_choice)).to redirect_to(poll_path(poll))
     end
   end
 end
