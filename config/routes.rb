@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dispatch' => "dispatch#trigger"
+
   scope '/admin' do
     root to: 'polls#index'
     devise_for :users
@@ -7,5 +9,6 @@ Rails.application.routes.draw do
       resources :poll_choices
     end
     resources :citizens
+    resources :dispatches, only: [:index]
   end
 end

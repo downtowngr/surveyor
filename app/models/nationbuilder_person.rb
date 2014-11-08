@@ -25,7 +25,7 @@ class NationbuilderPerson
   end
 
   def name
-    "#{person["first_name"] person["last_name"]}"
+    person["full_name"]
   end
 
   def tags

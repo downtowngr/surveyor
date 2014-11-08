@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe PollsController, type: :controller do
-  let(:valid_poll_name) { "Valid Poll Name" }
-  
   describe "GET index" do
     it "assigns all polls" do
-      poll = Poll.create(name: valid_poll_name)
+      poll = create(:poll)
       get :index
-      expect(assigns(:polls).all).to eq([poll])
+      expect(assigns(:polls)).to eq([poll])
     end
 
     it "renders the index template" do
@@ -17,7 +15,7 @@ RSpec.describe PollsController, type: :controller do
   end
 
   describe "GET show" do
-    let(:poll) { Poll.create(name: valid_poll_name) }
+    let(:poll) { create(:poll) }
     
     it "assigns the poll" do
       get :show, id: poll.id
@@ -44,11 +42,11 @@ RSpec.describe PollsController, type: :controller do
 
   describe "POST create" do
     it "create a new poll" do
-      expect { post :create, poll: {name: valid_poll_name} }.to change { Poll.count }.by(1)
+      expect { post :create, poll: attributes_for(:poll) }.to change { Poll.count }.by(1)
     end
 
     it "redirects to the new poll" do
-      expect(post :create, poll: {name: valid_poll_name}).to redirect_to(assigns(:poll))
+      expect(post :create, poll: attributes_for(:poll)).to redirect_to(assigns(:poll))
     end
   end
 

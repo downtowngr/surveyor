@@ -1,4 +1,5 @@
 <%= form_for @poll do |f| %>
+
   <div id="name" class="form-entry">
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -17,6 +18,11 @@
   <div id="end_date" class="form-entry">
     <%= f.label :end_date %>
     <%= f.date_select :end_date %>
+  </div>
+
+  <div class="form-entry">
+    <%= f.label :strategy %>
+    <%= f.select :strategy, options_for_select(Poll::VOTING_STRATEGIES) %>
   </div>
 
   <%= f.submit %>

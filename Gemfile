@@ -35,3 +35,8 @@ group :development, :test do
   gem "faker"
   gem "factory_girl_rails"
 end
+
+group :production do
+  gem "rails_12factor"
+  gem "unicorn"
+end
