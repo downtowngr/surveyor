@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe SingleVoteStrategy, type: :model do
   let(:poll_choice) { create(:poll_choice) }
   let(:poll) { poll_choice.poll }
-  let(:text) { t = Text.new({"From" => "1234567890", "Body" => ""}); t.keyword = poll_choice.name; t }
+  let(:text) { t = Text.new({"From" => "1234567890", "Body" => "#{poll_choice.name}"}) }
   
   describe "process text" do
     describe "when a new citizen votes" do

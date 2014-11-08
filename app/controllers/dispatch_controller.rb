@@ -28,9 +28,9 @@ class DispatchController < ApiController
     unless @response_text
       dispatch = Dispatch.find_by(keyword: @text.keyword)
       if dispatch.present?
-        @response_text = "Sorry, I don't know that option."
-      else
         @response_text = dispatch.process_text(@text)
+      else
+        @response_text = "Sorry, I don't know that option."
       end
     end
   end
