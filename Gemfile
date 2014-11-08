@@ -17,6 +17,8 @@ gem "attribute_normalizer"
 
 gem "simple_form"
 
+gem "simple_form"
+
 group :development do
   gem "guard", require: false
   gem "guard-bundler", require: false
