@@ -53,28 +53,17 @@ barChart = ->
 
   return my
 
-data = [
-	{
-		"name": "blue",
-		"votes": 200
-	},
-	{
-		"name": "green",
-		"votes": 45
-	},
-	{
-		"name": "red",
-		"votes": 13
-	},
-	{
-		"name": "yellow",
-		"votes": 17
-	}
-]
-
 myBarChart = barChart()
 
-d3.json "/admin/polls/" + poll_id + ".json", (error, data) ->
-  d3.select("#chart")
-    .datum data
-    .call myBarChart
+renderChart = ->
+        poll_id = $("#chart").data("poll-id")
+        d3.json "/admin/polls/" + poll_id + ".json", (error, data) ->
+        d3.select("#chart")
+        .datum data
+        .call myBarChart
+
+$(document).ready(renderChart)
+$(document).on(page:load, renderChart)
+                    
+        
+        
