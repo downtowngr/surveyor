@@ -19,6 +19,7 @@ h2 {
 	font-weight: 200;
 	text-transform: uppercase;
 	letter-spacing: 5px;
+	font-size: 18px;
 }
 
 input[type=text], input[type=password], input[type=email] {
@@ -119,12 +120,12 @@ nav {
 
 .alert {
 	@extend .flash;
-	background: red;
+	background: $c-red;
 }
 
 .notice {
 	@extend .flash;
-	background: green;
+	background: $c-green;
 }
 
 form {
@@ -137,4 +138,8 @@ form {
 			margin-right: 1em;
 		}
 	}
+}
+
+.delete {
+	color: $c-red;
 }
