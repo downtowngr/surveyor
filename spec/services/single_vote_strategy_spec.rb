@@ -5,7 +5,7 @@ RSpec.describe SingleVoteStrategy, type: :model do
   let(:poll) { poll_choice.poll }
   let(:text) { t = Text.new({"From" => "1234567890", "Body" => "#{poll_choice.name}"}) }
 
-  describe "process text" do
+  describe "#process_text" do
     describe "when a new citizen votes" do
       it "should create a new vote" do
         expect { SingleVoteStrategy.process_text(poll, text) }.to change { poll_choice.votes.count }.by(1)

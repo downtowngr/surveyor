@@ -35,7 +35,7 @@ class DispatchController < ApiController
     end
   end
 
-  def check_keyword 
+  def check_keyword
     unless @text.keyword
       @response_text = "Sorry, I don't understand that. Try sending only one word."
       logger.info "Response contained zero or multiple words."
