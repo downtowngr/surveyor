@@ -28,6 +28,6 @@ class Text
   # There will only be a keyword if the 
   # the word array is size one.
   def keyword
-    word_array.size == 1 ? word_array.first : nil
+    word_array.size == 1 ? word_array.first.upcase : nil
   end
 end

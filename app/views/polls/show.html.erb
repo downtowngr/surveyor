@@ -10,7 +10,7 @@
 <h2>Poll Choices</h2>
 <ul>
   <% @poll.poll_choices.each do |poll_choice| %>
-    <li><b><%= link_to poll_choice.name, edit_poll_poll_choice_path(@poll, poll_choice) %></b> <%= poll_choice.description %></li>
+    <li><b><%= link_to poll_choice.name, edit_poll_poll_choice_path(@poll, poll_choice) %></b> - <%= poll_choice.votes.count %> vote(s)</li>
   <% end %>
 </ul>
 <%= link_to 'Add a Choice', new_poll_poll_choice_path(@poll) %>
