@@ -12,15 +12,15 @@ RSpec.describe MultipleChoiceStrategy, type: :model do
 
     describe "when a citizen votes twice for the same choice" do
       it "should not increment the vote" do
-        expect { MultipleChoiceStrategy.process_text(poll, text1) }.to change { poll_choice1.votes.count }.by(1)
-        expect { MultipleChoiceStrategy.process_text(poll, text1) }.not_to change { poll_choice1.votes.count }
+        expect { MultipleChoiceStrategy.process_text(poll, text1, citizen) }.to change { poll_choice1.votes.count }.by(1)
+        expect { MultipleChoiceStrategy.process_text(poll, text1, citizen) }.not_to change { poll_choice1.votes.count }
       end
     end
 
     describe "when a citizen votes for different choices" do
       it "should increment the votes for both" do
-        expect { MultipleChoiceStrategy.process_text(poll, text1) }.to change { poll_choice1.votes.count }.by(1)
-        expect { MultipleChoiceStrategy.process_text(poll, text2) }.to change { poll_choice2.votes.count }.by(1)
+        expect { MultipleChoiceStrategy.process_text(poll, text1, citizen) }.to change { poll_choice1.votes.count }.by(1)
+        expect { MultipleChoiceStrategy.process_text(poll, text2, citizen) }.to change { poll_choice2.votes.count }.by(1)
       end
     end
   end

@@ -7,8 +7,8 @@ class Dispatch < ActiveRecord::Base
     value.present? && value.is_a?(String) ? value.upcase : value
   end
 
-  def process_text(text)
-    poll.strategy.constantize.process_text(poll, text)
+  def trigger(text, citizen)
+    poll.strategy.constantize.process_text(poll, text, citizen)
   end
 end
 
