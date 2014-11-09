@@ -9,7 +9,7 @@ Written by Conor Livingston, GR GiveCamp 2014
 =end
 
 class Text
-  attr_reader :body, :from
+  attr_reader :body
   attr_accessor :keyword
 
   def initialize(params)
@@ -17,6 +17,10 @@ class Text
     @body = params["Body"]
   end
 
+  def from
+    @from.gsub("+", "")
+  end
+  
   def number
     from
   end
