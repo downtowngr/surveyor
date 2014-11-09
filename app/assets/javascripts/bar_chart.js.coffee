@@ -58,12 +58,11 @@ myBarChart = barChart()
 renderChart = ->
         poll_id = $("#chart").data("poll-id")
         d3.json "/admin/polls/" + poll_id + ".json", (error, data) ->
-        d3.select("#chart")
-        .datum data
-        .call myBarChart
+                d3.select("#chart")
+                .datum data
+                .call myBarChart
 
 $(document).ready(renderChart)
-$(document).on(page:load, renderChart)
                     
         
         
