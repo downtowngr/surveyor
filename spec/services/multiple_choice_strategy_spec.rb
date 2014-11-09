@@ -8,7 +8,7 @@ RSpec.describe MultipleChoiceStrategy, type: :model do
     let(:text1) { Text.new({"From" => "1234567890", "Body" => "#{poll_choice1.name}"}) }
     let(:text2) { Text.new({"From" => "1234567890", "Body" => "#{poll_choice2.name}"}) }
 
-    let(:citizen) { create(:citizen, phone_number: text1.from) }
+    let(:citizen) { create(:citizen, phone_number: text1.number) }
 
     describe "when a citizen votes twice for the same choice" do
       it "should not increment the vote" do

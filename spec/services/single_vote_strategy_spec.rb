@@ -4,7 +4,7 @@ RSpec.describe SingleVoteStrategy, type: :model do
   let(:poll_choice) { create(:poll_choice) }
   let(:poll) { poll_choice.poll }
   let(:text) { t = Text.new({"From" => "1234567890", "Body" => "#{poll_choice.name}"}) }
-  let!(:citizen) { create(:citizen, phone_number: text.from) }
+  let!(:citizen) { create(:citizen, phone_number: text.number) }
 
   describe "#process_text" do
     describe "when a new citizen votes" do
