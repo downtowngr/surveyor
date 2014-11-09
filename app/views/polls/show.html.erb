@@ -9,9 +9,9 @@
 
 <h2>Poll Choices</h2>
 <ul>
-<% @poll.poll_choices.each do |poll_choice| %>
-	<li><b><%= poll_choice.name %></b> <%= poll_choice.description %></li>
-<% end %>
+  <% @poll.poll_choices.each do |poll_choice| %>
+    <li><b><%= link_to poll_choice.name, edit_poll_poll_choice_path(@poll, poll_choice) %></b> <%= poll_choice.description %></li>
+  <% end %>
 </ul>
 <%= link_to 'Add a Choice', new_poll_poll_choice_path(@poll) %>
 
