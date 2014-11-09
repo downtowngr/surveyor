@@ -1,6 +1,6 @@
 class PollChoice < ActiveRecord::Base
   belongs_to :poll
-  has_many :votes
+  has_many :votes, dependent: :destroy
   has_many :citizens, through: :votes
 
   normalize_attribute :name, with: [:strip, :blank] do |value|

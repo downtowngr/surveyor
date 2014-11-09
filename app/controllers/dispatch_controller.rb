@@ -7,7 +7,6 @@ class DispatchController < ApiController
     # about a path of action based on the listening_state of a
     # given citizen. 
 
-
     # For now the app will just assume that everything it receives
     # is a response to a poll question.
     check_keyword
