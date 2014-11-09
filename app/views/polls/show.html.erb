@@ -10,16 +10,30 @@
 	Active from <%= @poll.start_date.to_formatted_s(:MON_DAY) %> until <%= @poll.end_date.to_formatted_s(:MON_DAY) %>
 </p>
 
-<h2>Response Count</h2>
-<div id="chart"></div>
+<div class="col-6">
+	<h2>Poll Choices</h2>
+	<% if @poll.poll_choices.count > 0 %>
+  	  <ul>
+	    <% @poll.poll_choices.each do |poll_choice| %>
+	      <li><b><%= link_to poll_choice.name, edit_poll_poll_choice_path(@poll, poll_choice) %></b> - <%= poll_choice.votes.count %> vote(s)</li>
+	    <% end %>
+	  </ul>
+	<% else %>
+	  <p>This poll has no choices.</p>
+	<% end %>
 
-<h2>Poll Choices</h2>
-<ul>
-  <% @poll.poll_choices.each do |poll_choice| %>
-    <li><b><%= link_to poll_choice.name, edit_poll_poll_choice_path(@poll, poll_choice) %></b> - <%= poll_choice.votes.count %> vote(s)</li>
-  <% end %>
-</ul>
+	<%= link_to 'Add a Choice', new_poll_poll_choice_path(@poll), class: 'btn' %>
 
-<%= link_to 'Add a Choice', new_poll_poll_choice_path(@poll), class: 'btn' %>
+</div>
 
+<div class="col-6">
+	<h2>Response Count</h2>
+	<div id="chart"></div>
+</div>
+
+
+<script>
+var poll_id = <%= @poll.id %>;
+</script>
 <script src="/assets/bar-chart.js"></script>
+
