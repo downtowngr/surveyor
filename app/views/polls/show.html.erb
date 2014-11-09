@@ -1,11 +1,17 @@
 <h1><%= @poll.name %></h1>
 
 <p>
-  <%= link_to 'Edit', edit_poll_path(@poll) %>
-  <%= link_to 'Delete', @poll, method: :delete, data: {confirm: 'Are you sure?'} %>
+  <%= link_to 'Edit', edit_poll_path(@poll), class: 'btn' %>
+  <%= link_to 'Delete', @poll, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn' %>
 </p>
+
 <p><%= @poll.description %></p>
-<p>Active from <%= @poll.start_date.to_formatted_s(:MON_DAY) %> until <%= @poll.end_date.to_formatted_s(:MON_DAY) %>.</p>
+<p>
+	Active from <%= @poll.start_date.to_formatted_s(:MON_DAY) %> until <%= @poll.end_date.to_formatted_s(:MON_DAY) %>
+</p>
+
+<h2>Response Count</h2>
+<div id="chart"></div>
 
 <h2>Poll Choices</h2>
 <ul>
@@ -13,6 +19,7 @@
 	<li><b><%= poll_choice.name %></b> <%= poll_choice.description %></li>
 <% end %>
 </ul>
-<%= link_to 'Add a Choice', new_poll_poll_choice_path(@poll) %>
 
+<%= link_to 'Add a Choice', new_poll_poll_choice_path(@poll), class: 'btn' %>
 
+<script src="/assets/bar-chart.js"></script>

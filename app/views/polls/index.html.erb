@@ -1,20 +1,27 @@
 <h1>Polls</h1>
 
+
+<% if @polls.count > 0 %>
 <table>
   <thead>
-  	<th></th>
-  	<th></th>
-  	<th></th>
-  	<th></th>
+    <th></th>
+    <th></th>
+    <th>Dispatches</th>
+    <th>Start</th>
+    <th>End</th>
   </thead>
   <% @polls.each do |poll| %>
     <tr>
       <td><%= link_to poll.name, poll %></td>
       <td><%= poll.description %></td>
+      <td><%= poll.dispatches.count %></td>
       <td><%= poll.start_date.to_formatted_s(:MON_DAY) %></td>
       <td><%= poll.end_date.to_formatted_s(:MON_DAY) %></td>
     </tr>
   <% end %>
 </table>
+<% else %>
+  <p>You don't have any polls.</p>
+<% end %>
 
-<%= link_to 'Create Poll', new_poll_path %>
+<%= link_to 'Create Poll', new_poll_path, class: 'btn' %>

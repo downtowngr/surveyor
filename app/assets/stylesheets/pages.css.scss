@@ -28,6 +28,26 @@ input[type=text], input[type=password], input[type=email] {
 	width: 250px;
 }
 
+td {
+	padding: 0 2em 1em 0;
+}
+
+.btn {
+	padding: 0.5em;
+	background: #eee;
+	border-radius: 5px;
+	color: #666;
+	text-decoration: none;
+	cursor: pointer;
+	border: none;
+	font-family: fira_sans;
+	font-size: 16px;
+}
+
+.btn:hover {
+	background: #ddd;
+}
+
 #auth {
 	width: 250px;
 	margin: 0 auto;
