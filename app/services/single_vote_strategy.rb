@@ -8,7 +8,7 @@ class SingleVoteStrategy
 
     # Keep remove and add in a transaction to not lose the users vote
     ActiveRecord::Base.transaction do
-      current_vote.destroy if current_vote # 
+      current_vote.destroy if current_vote
 
       # Regardless, create the new vote
       poll_choice.votes.create(citizen_id: citizen.id)

@@ -1,7 +1,7 @@
 <h1>Citizens</h1>
 
 <ul>
-  <%= @citizens.each do |citizen| %>
+  <% @citizens.each do |citizen| %>
     <li><%= link_to citizen.phone_number, citizen %></li>
   <% end  %>
 </ul>
