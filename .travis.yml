@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.1.3
+  - 2.1.4
 env:
   - twilio_account_sid=asdf twilio_auth_token=asdf nb_nation_name=asdf nb_api_token=asdf
 addons:
