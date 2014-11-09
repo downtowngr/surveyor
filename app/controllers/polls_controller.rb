@@ -6,6 +6,11 @@ class PollsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json do
+        @poll_choices = @poll.poll_choices
+      end
   end
 
   def new
