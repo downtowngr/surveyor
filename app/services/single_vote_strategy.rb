@@ -1,6 +1,7 @@
 class SingleVoteStrategy
   def self.process_text(poll, text)
     poll_choice = poll.poll_choices.find_by(name: text.keyword)
+    puts "Looking up citizen #{text.from}"
     citizen = Citizen.find_or_create_by(phone_number: text.from)
 
     # Check if this citizen has already voted
