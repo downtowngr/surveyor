@@ -15,6 +15,7 @@ gem "twilio-ruby"
 gem "pry-rails"
 gem "figaro"
 gem "attribute_normalizer"
+gem "jbuilder"
 
 group :development do
   gem "guard", require: false
