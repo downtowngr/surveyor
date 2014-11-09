@@ -15,7 +15,7 @@
 	<% if @poll.poll_choices.count > 0 %>
   	  <ul>
 	    <% @poll.poll_choices.each do |poll_choice| %>
-	      <li><b><%= link_to poll_choice.name, edit_poll_poll_choice_path(@poll, poll_choice) %></b> - <%= poll_choice.votes.count %> vote(s)</li>
+	      <li><b><%= link_to poll_choice.name, edit_poll_poll_choice_path(@poll, poll_choice) %></b> - <%= poll_choice.votes.count %> vote(s) <%= link_to raw("<i class='fa fa-trash delete'></i>"), poll_poll_choice_path(@poll, poll_choice), method: :delete %></li>
 	    <% end %>
 	  </ul>
 	<% else %>

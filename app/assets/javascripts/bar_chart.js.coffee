@@ -8,11 +8,11 @@ barChart = ->
     bottom: 10
     left: 10
 
-  width = 200
+  width = 350
 
   itemHeight = 20
   barHeight = 10
-  labelWidth = 50
+  labelWidth = 100
 
   scale = d3.scale.linear()
     .range([0, width - margins.left - margins.right - labelWidth])
@@ -40,6 +40,7 @@ barChart = ->
         .text (d) -> d.name
         .attr "x", labelWidth - 5
         .style "text-anchor", "end"
+        .style "font-size", "12px"
 
       bars.append("rect")
         .attr "x", labelWidth
@@ -63,6 +64,6 @@ renderChart = ->
                 .call myBarChart
 
 $(document).ready(renderChart)
-                    
-        
-        
+
+
+

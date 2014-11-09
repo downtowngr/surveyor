@@ -14,7 +14,7 @@
     <tr>
       <td><%= link_to poll.name, poll %></td>
       <td><%= poll.description %></td>
-      <td><%= poll.dispatches.count %></td>
+      <td><%= poll.poll_choices.count %></td>
       <td><%= poll.start_date.to_formatted_s(:MON_DAY) %></td>
       <td><%= poll.end_date.to_formatted_s(:MON_DAY) %></td>
     </tr>
