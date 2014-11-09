@@ -14,7 +14,7 @@ class SingleVoteStrategy
       end
 
       # Regardless, create the new vote
-      choice.votes.create(citizen_id: citizen.id)
+      poll_choice.votes.create(citizen_id: citizen.id)
     end
   end
 end
