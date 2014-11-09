@@ -20,7 +20,7 @@ class Text
   def from
     @from.gsub("+", "")
   end
-  
+
   def number
     from
   end
