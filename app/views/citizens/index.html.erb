@@ -2,6 +2,6 @@
 
 <ul>
   <% @citizens.each do |citizen| %>
-    <li><%= link_to citizen.phone_number, citizen %></li>
+    <li><%= link_to citizen.phone_number, citizen %>, voted <%= citizen.votes.count %> times</li>
   <% end  %>
 </ul>
