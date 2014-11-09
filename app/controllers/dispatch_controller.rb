@@ -28,7 +28,7 @@ class DispatchController < ApiController
       dispatch = Dispatch.find_by(keyword: @text.keyword.upcase)
       if dispatch.present?
         dispatch.process_text(@text)
-        @response_text = "It's alive!"
+        @response_text = "Thank you for participating in the downtowngr.org survey!"
       else
         @response_text = "Sorry, I don't know that option."
       end
