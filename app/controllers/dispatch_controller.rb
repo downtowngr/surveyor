@@ -7,7 +7,6 @@ class DispatchController < ApiController
     # about a path of action based on the listening_state of a
     # given citizen. 
 
-
     # For now the app will just assume that everything it receives
     # is a response to a poll question.
     check_keyword
@@ -26,9 +25,10 @@ class DispatchController < ApiController
   def process_keyword
     # No need to do this if response_text is already set
     unless @response_text
-      dispatch = Dispatch.find_by(keyword: @text.keyword)
+      dispatch = Dispatch.find_by(keyword: @text.keyword.upcase)
       if dispatch.present?
-        @response_text = dispatch.process_text(@text)
+        dispatch.process_text(@text)
+        @response_text = "Thank you for participating in the downtowngr.org survey!"
       else
         @response_text = "Sorry, I don't know that option."
       end

@@ -9,7 +9,7 @@ Written by Conor Livingston, GR GiveCamp 2014
 =end
 
 class Text
-  attr_reader :body, :from
+  attr_reader :body
   attr_accessor :keyword
 
   def initialize(params)
@@ -17,6 +17,10 @@ class Text
     @body = params["Body"]
   end
 
+  def from
+    @from.gsub("+", "")
+  end
+  
   def number
     from
   end
@@ -28,6 +32,6 @@ class Text
   # There will only be a keyword if the 
   # the word array is size one.
   def keyword
-    word_array.size == 1 ? word_array.first : nil
+    word_array.size == 1 ? word_array.first.upcase : nil
   end
 end

@@ -1,0 +1,9 @@
+<h1><%= @citizen.phone_number %></h1>
+
+<h2>Votes</h2>
+
+<ul>
+  <% @citizen.poll_choices.each do |poll_choice| %>
+    <li>Voted for <%= poll_choice.name %> in <%= poll_choice.poll.name %></li>
+  <% end %>
+</ul>

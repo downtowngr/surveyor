@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.1.4"
 
 gem 'rails', '4.1.7'
 gem 'pg', group: :production
@@ -15,6 +16,7 @@ gem "twilio-ruby"
 gem "pry-rails"
 gem "figaro"
 gem "attribute_normalizer"
+gem "jbuilder"
 
 group :development do
   gem "guard", require: false

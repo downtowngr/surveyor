@@ -18,6 +18,13 @@ class PollChoicesController < ApplicationController
 
   def edit
   end
+
+  def update
+    @poll_choice.update(poll_choice_params)
+    @poll_choice.save
+    redirect_to @poll
+  end
+
   
   private
 
