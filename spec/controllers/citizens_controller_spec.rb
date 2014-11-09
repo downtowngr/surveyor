@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CitizensController, type: :controller do
   let(:valid_phone_number) { Faker::PhoneNumber.cell_phone }
-  
+
   describe "GET index" do
     it "assigns all citizens" do
       citizen = Citizen.create!(phone_number: valid_phone_number)
@@ -16,7 +16,7 @@ RSpec.describe CitizensController, type: :controller do
     end
   end
 
-  describe "GET new" do
+  xdescribe "GET new" do
     it "assigns a new citizen" do
       get :new
       expect(assigns(:citizen)).to be_instance_of(Citizen)
@@ -29,7 +29,7 @@ RSpec.describe CitizensController, type: :controller do
     end
   end
 
-  describe "POST create" do
+  xdescribe "POST create" do
     it "creates a new citizen" do
       expect { post :create, citizen: {phone_number: valid_phone_number } }.to change { Citizen.count }.by(1)
     end
