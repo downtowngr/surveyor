@@ -1,6 +1,5 @@
 class Listener < ActiveRecord::Base
-  # TODO: Listener relationships need to be generic
-  belongs_to :poll
+  belongs_to :listening, polymorphic: true
 
   validates :keyword, presence: true
 
@@ -9,7 +8,7 @@ class Listener < ActiveRecord::Base
   end
 
   def trigger(text, citizen)
-    poll.process_vote(text, citizen)
+    listening.respond_to(text, citizen)
   end
 end
 

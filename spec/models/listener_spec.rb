@@ -1,17 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Listener, type: :model do
-  describe "process_text" do
-    # dispatch create is triggered by poll_choice creation
-    let(:poll_choice) { create(:poll_choice) }
-    let(:citizen) { create(:citizen) }
+  describe "trigger" do
+    let(:text) { double(:text) }
+    let(:citizen) { double(:citizen) }
+    let(:poll) { create(:poll) }
 
-    it "should pass the text message to the poll strategy" do
-      listener = Listener.find_by(keyword: poll_choice.name)
-      text = Text.new({"From" => "", "Body" => ""})
+    let(:listener) { create(:listener, listening: poll) }
 
-      expect(listener.poll.strategy.constantize).to receive(:process_text)
-
+    it "calls #trigger with text and citizen object on listening" do
+      expect(poll).to receive(:respond_to).with(text, citizen)
       listener.trigger(text, citizen)
     end
   end
