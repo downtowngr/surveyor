@@ -1,10 +1,12 @@
 class MultipleChoiceStrategy
-  def self.process_text(poll, text, citizen)
-    new_choice = poll.poll_choices.find_by(name: text.keyword)
-    current_choice = citizen.current_vote(poll)
+  def self.process_text(new_choice, current_choices, text, citizen)
+    already_voted = current_choices.where(id: new_choice.id)
 
-    unless current_choice == new_choice
+    if already_voted.empty?
       new_choice.votes.create(citizen_id: citizen.id)
+      text.respond_with = "You've voted for #{new_choice.name}"
+    else
+      text.respond_with = "Sorry, you can't vote for #{already_voted.first.name} more then once."
     end
   end
 end
