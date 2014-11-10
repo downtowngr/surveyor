@@ -5,7 +5,7 @@ class DispatchController < ApiController
 
     unless @text.keyword
       @text.respond_with = "Sorry, I don't understand that. Try sending only one word."
-      logger.info "Response contianed unprocessable words"
+      logger.info "Response contained unprocessable words"
     end
 
     # We have what looks like a valid keyword

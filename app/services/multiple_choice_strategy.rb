@@ -6,7 +6,7 @@ class MultipleChoiceStrategy
       new_choice.votes.create(citizen_id: citizen.id)
       text.respond_with = "You've voted for #{new_choice.name}"
     else
-      text.respond_with = "Sorry, you can't vote for #{already_voted.first.name} more then once."
+      text.respond_with = "Sorry, you can't vote for #{already_voted.first.name} more than once."
     end
   end
 end
