@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe PollChoice, :type => :model do
   let(:poll) { create(:poll) }
-  
+
   it "should create a dispatch as it is created" do
-    expect { create(:poll_choice, poll: poll) }.to change { poll.dispatches.count }.by(1)
+    expect { create(:poll_choice, poll: poll) }.to change { poll.listeners.count }.by(1)
   end
 end

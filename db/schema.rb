@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108202321) do
+ActiveRecord::Schema.define(version: 20141110205112) do
 
   create_table "citizens", force: true do |t|
     t.string   "phone_number"
@@ -19,12 +19,16 @@ ActiveRecord::Schema.define(version: 20141108202321) do
     t.datetime "updated_at"
   end
 
-  create_table "dispatches", force: true do |t|
+  create_table "listeners", force: true do |t|
     t.string   "keyword"
-    t.integer  "poll_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "listening_id"
+    t.string   "listening_type"
   end
+
+  add_index "listeners", ["keyword"], name: "index_listeners_on_keyword"
+  add_index "listeners", ["listening_id", "listening_type"], name: "index_listeners_on_listening_id_and_listening_type"
 
   create_table "listening_states", force: true do |t|
     t.string   "number"

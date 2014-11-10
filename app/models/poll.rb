@@ -5,12 +5,12 @@ class Poll < ActiveRecord::Base
 
   has_many :poll_choices, dependent: :destroy
   has_many :votes, through: :poll_choices
-  has_many :dispatches, dependent: :destroy
+  has_many :listeners, as: :listening, dependent: :destroy
 
   validates :name, presence: true
   validates :strategy, presence: true
 
-  def process_vote(text, citizen)
+  def respond_to(text, citizen)
     new_choice = poll_choices.find_by(name: text.keyword)
     current_choices = citizen.current_votes(self)
 

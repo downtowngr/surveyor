@@ -1,7 +1,5 @@
-class Dispatch < ActiveRecord::Base
-  # TODO: Dispatch needs to become Listener
-  # TODO: Listener relationships need to be generic
-  belongs_to :poll
+class Listener < ActiveRecord::Base
+  belongs_to :listening, polymorphic: true
 
   validates :keyword, presence: true
 
@@ -10,7 +8,7 @@ class Dispatch < ActiveRecord::Base
   end
 
   def trigger(text, citizen)
-    poll.process_vote(text, citizen)
+    listening.respond_to(text, citizen)
   end
 end
 

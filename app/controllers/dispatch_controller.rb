@@ -5,15 +5,15 @@ class DispatchController < ApiController
 
     unless @text.keyword
       @text.respond_with = "Sorry, I don't understand that. Try sending only one word."
-      logger.info "Response contianed unprocessable words"
+      logger.info "Response contained unprocessable words"
     end
 
     # We have what looks like a valid keyword
     if @text.keyword?
-      dispatch = Dispatch.find_by(keyword: @text.keyword)
+      listener = Listener.find_by(keyword: @text.keyword)
 
-      if dispatch.present?
-        dispatch.trigger(@text, @citizen)
+      if listener.present?
+        listener.trigger(@text, @citizen)
       else
         @text.respond_with = "Sorry, I don't know that option."
       end
