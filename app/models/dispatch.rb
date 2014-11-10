@@ -1,4 +1,6 @@
 class Dispatch < ActiveRecord::Base
+  # TODO: Dispatch needs to become Listener
+  # TODO: Listener relationships need to be generic
   belongs_to :poll
 
   validates :keyword, presence: true
@@ -8,7 +10,7 @@ class Dispatch < ActiveRecord::Base
   end
 
   def trigger(text, citizen)
-    poll.strategy.constantize.process_text(poll, text, citizen)
+    poll.process_vote(text, citizen)
   end
 end
 

@@ -6,7 +6,7 @@ class Citizen < ActiveRecord::Base
 
   validates :phone_number, presence: true, uniqueness: true, length: { in: 10..15 }
 
-  def current_vote(poll)
-    poll_choices.find_by(poll: poll)
+  def current_votes(poll)
+    poll_choices.where(poll: poll)
   end
 end
