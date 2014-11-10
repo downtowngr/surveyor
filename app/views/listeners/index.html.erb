@@ -1,0 +1,7 @@
+<h1>Listeners</h1>
+
+<ul>
+  <% @listeners.each do |listener| %>
+    <li><%= listener.keyword %> - <%= listener.poll.name %></li>
+  <% end  %>
+</ul>

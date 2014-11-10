@@ -1,5 +1,4 @@
-class Dispatch < ActiveRecord::Base
-  # TODO: Dispatch needs to become Listener
+class Listener < ActiveRecord::Base
   # TODO: Listener relationships need to be generic
   belongs_to :poll
 

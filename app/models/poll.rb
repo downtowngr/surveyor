@@ -5,7 +5,7 @@ class Poll < ActiveRecord::Base
 
   has_many :poll_choices, dependent: :destroy
   has_many :votes, through: :poll_choices
-  has_many :dispatches, dependent: :destroy
+  has_many :listeners, dependent: :destroy
 
   validates :name, presence: true
   validates :strategy, presence: true

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :dispatch do
+  factory :listener do
     sequence(:keyword) { |n| "keyword#{n}" }
     poll
   end
