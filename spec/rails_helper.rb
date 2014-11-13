@@ -1,13 +1,16 @@
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
-ENV["RAILS_ENV"] ||= 'test'
-require 'spec_helper'
+ENV["RAILS_ENV"] ||= "test"
+require "spec_helper"
 require File.expand_path("../../config/environment", __FILE__)
-require 'rspec/rails'
+require "rspec/rails"
 
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
+
+require "simplecov"
+SimpleCov.start
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -31,7 +34,7 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.include FactoryGirl::Syntax::Methods
-  
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
@@ -42,12 +45,12 @@ RSpec.configure do |config|
       example.run
     end
   end
-  
+
   config.before(:each, type: :controller) do
-    admin = User.create!(email: 'admin@downtowngr.org', password: 'password', password_confirmation: 'password')
+    admin = User.create!(email: "admin@downtowngr.org", password: "password", password_confirmation: "password")
     sign_in admin
   end
-  
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
