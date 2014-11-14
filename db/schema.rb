@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112205250) do
+ActiveRecord::Schema.define(version: 20141114172757) do
 
   create_table "check_ins", force: true do |t|
     t.integer  "event_id"
@@ -41,14 +41,14 @@ ActiveRecord::Schema.define(version: 20141112205250) do
   end
 
   create_table "listeners", force: true do |t|
-    t.string   "keyword"
+    t.string   "keyword",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "listening_id"
-    t.string   "listening_type"
+    t.integer  "listening_id",   null: false
+    t.string   "listening_type", null: false
   end
 
-  add_index "listeners", ["keyword"], name: "index_listeners_on_keyword"
+  add_index "listeners", ["keyword"], name: "index_listeners_on_keyword", unique: true
   add_index "listeners", ["listening_id", "listening_type"], name: "index_listeners_on_listening_id_and_listening_type"
 
   create_table "listening_states", force: true do |t|
