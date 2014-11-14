@@ -17,6 +17,7 @@ gem "pry-rails"
 gem "figaro"
 gem "attribute_normalizer"
 gem "liquid"
+gem "jbuilder"
 
 group :development do
   gem "guard", require: false
