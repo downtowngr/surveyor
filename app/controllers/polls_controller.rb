@@ -19,7 +19,7 @@ class PollsController < ApplicationController
       flash[:notice] = "Successfully created #{@poll.name}"
       redirect_to poll_path(@poll)
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -31,7 +31,7 @@ class PollsController < ApplicationController
       flash[:notice] = "Successfully updated #{@poll.name}"
       redirect_to poll_path(@poll)
     else
-      render 'edit'
+      render "edit"
     end
   end
 

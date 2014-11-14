@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110205112) do
+ActiveRecord::Schema.define(version: 20141114172757) do
+
+  create_table "check_ins", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "citizen_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "check_ins", ["citizen_id"], name: "index_check_ins_on_citizen_id"
+  add_index "check_ins", ["event_id"], name: "index_check_ins_on_event_id"
 
   create_table "citizens", force: true do |t|
     t.string   "phone_number"
@@ -19,15 +29,26 @@ ActiveRecord::Schema.define(version: 20141110205112) do
     t.datetime "updated_at"
   end
 
-  create_table "listeners", force: true do |t|
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.text     "description"
     t.string   "keyword"
+    t.string   "autoresponse"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "listening_id"
-    t.string   "listening_type"
   end
 
-  add_index "listeners", ["keyword"], name: "index_listeners_on_keyword"
+  create_table "listeners", force: true do |t|
+    t.string   "keyword",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "listening_id",   null: false
+    t.string   "listening_type", null: false
+  end
+
+  add_index "listeners", ["keyword"], name: "index_listeners_on_keyword", unique: true
   add_index "listeners", ["listening_id", "listening_type"], name: "index_listeners_on_listening_id_and_listening_type"
 
   create_table "listening_states", force: true do |t|
