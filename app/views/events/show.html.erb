@@ -1,0 +1,31 @@
+<h1><%= @event.name %></h1>
+
+<p>
+  <%= link_to "Edit", edit_event_path(@event), class: "btn" %>
+  <%= link_to "Delete", @event, method: :delete, data: {confirm: "Are you sure?"}, class: "btn" %>
+</p>
+
+<div class="col-6">
+  <p><%= @event.description %></p>
+
+  <p>
+    Active from <%= @event.start_date.to_formatted_s(:MON_DAY) %> until <%= @event.end_date.to_formatted_s(:MON_DAY) %>
+  </p>
+
+  <p>Keyword: <%= @event.keyword %></p>
+
+
+</div>
+
+<div class="col-6">
+  <p><h2>Autoresponse</h2><%= @event.autoresponse %></p>
+
+  <h2>CheckIns</h2>
+  <%= pluralize(@event.check_ins.count, "Citizen") %>
+
+  <ul>
+  <% @event.citizens.each do |c| %>
+    <li><%= link_to c.phone_number, c %></li>
+  <% end %>
+  </ul>
+</div>

@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
-  has_many :check_ins
-  has_many :listeners, as: :listening
+  has_many :check_ins, dependent: :destroy
+  has_many :citizens, through: :check_ins
+  has_one :listener, as: :listening, dependent: :destroy
 
   validates :name, presence: true
   validates :keyword, presence: true
@@ -10,12 +11,16 @@ class Event < ActiveRecord::Base
   end
 
   after_create do
-    listeners.create(keyword: keyword)
+    build_listener(keyword: keyword).save!
+  end
+
+  after_update do
+    listener.update_attributes!(keyword: keyword) if keyword != listener.keyword
   end
 
   def autoresponse=(response)
     if response
-      text_template = Liquid::Template.parse(response)
+      text_template = ::Liquid::Template.parse(response)
 
       # Currently supporting 'name' and 'keyword' liquid tags
       super(text_template.render({"name" => name, "keyword" => keyword}))
@@ -23,7 +28,7 @@ class Event < ActiveRecord::Base
   end
 
   def respond_to(text, citizen)
-    if check_in = check_ins.find_by_id(citizen.id)
+    if check_in = check_ins.find_by_citizen_id(citizen.id)
       text.respond_with = "I love your enthusiasm! You've already checked in to #{name}."
     else
       check_ins.create(citizen: citizen)
