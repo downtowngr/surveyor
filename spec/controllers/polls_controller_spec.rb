@@ -16,7 +16,7 @@ RSpec.describe PollsController, type: :controller do
 
   describe "GET show" do
     let(:poll) { create(:poll) }
-    
+
     it "assigns the poll" do
       get :show, id: poll.id
       expect(assigns(:poll)).to eq(poll)
