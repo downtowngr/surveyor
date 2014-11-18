@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CitizensController, type: :controller do
-  let(:valid_phone_number) { Faker::PhoneNumber.cell_phone }
+  let(:valid_phone_number) { "+16162345555" }
 
   describe "GET index" do
     it "assigns all citizens" do

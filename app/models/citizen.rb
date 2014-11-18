@@ -6,7 +6,7 @@ class Citizen < ActiveRecord::Base
   validates :phone_number, presence: true, uniqueness: true, length: {is: 10}
 
   normalize_attribute :phone_number do |value|
-    value.match(/\w*(\d{10})/)[1]
+    value.present? && value.size >= 10 ? value.match(/\w*(\d{10})/)[1] : nil
   end
 
   def current_votes(poll)

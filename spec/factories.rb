@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :citizen do
-    phone_number { Faker::PhoneNumber.cell_phone }
+    phone_number { "1234445555" }
   end
 
   factory :listener do
