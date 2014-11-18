@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141114172757) do
+ActiveRecord::Schema.define(version: 20141118190628) do
 
   create_table "check_ins", force: true do |t|
     t.integer  "event_id"
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 20141114172757) do
     t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "nationbuilder_id"
+    t.string   "full_name"
+    t.string   "email"
+    t.boolean  "mobile_opt_in"
   end
 
   create_table "events", force: true do |t|
@@ -38,6 +42,7 @@ ActiveRecord::Schema.define(version: 20141114172757) do
     t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "nationbuilder_tag"
   end
 
   create_table "listeners", force: true do |t|
@@ -77,6 +82,7 @@ ActiveRecord::Schema.define(version: 20141114172757) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "strategy"
+    t.string   "nationbuilder_tag"
   end
 
   create_table "users", force: true do |t|
