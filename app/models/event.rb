@@ -20,7 +20,7 @@ class Event < ActiveRecord::Base
 
   def autoresponse=(response)
     if response
-      text_template = ::Liquid::Template.parse(response)
+      text_template = Liquid::Template.parse(response)
 
       # Currently supporting 'name' and 'keyword' liquid tags
       super(text_template.render({"name" => name, "keyword" => keyword}))
