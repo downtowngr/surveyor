@@ -10,7 +10,7 @@ RSpec.describe Text, type: :model do
   describe "#new" do
 
     it "sets @from" do
-      expect(text.number).to eq("16165555555")
+      expect(text.number).to eq("6165555555")
     end
 
     it "sets @body" do
