@@ -9,7 +9,7 @@ RSpec.describe Text, type: :model do
 
   describe "#new" do
 
-    it "sets @from" do
+    it "sets @from to be 10 digits" do
       expect(text.number).to eq("6165555555")
     end
 

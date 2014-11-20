@@ -19,7 +19,7 @@
 		<div id="user_info">
 		  <ul class="list-inline">
         <!-- TODO: Display listening phone number -->
-        <li>616-499-3901</li>
+        <li><%= number_to_phone(Figaro.env.twilio_number) %></li>
   		  <li><%= current_user.email %></li>
   		  <li><%=link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
 	     </ul>
