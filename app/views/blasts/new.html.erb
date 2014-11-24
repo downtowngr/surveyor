@@ -1,0 +1,27 @@
+<h1>New Blast</h1>
+
+<%= form_for @blast do |f| %>
+
+  <div id="name" class="form-entry">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div id="message" class="form-entry">
+    <%= f.label :message %>
+    <%= f.text_area :message %>
+  </div>
+
+  <h2>Sending To</h2>
+
+  <div id="citizens">
+    <ul>
+    <% @citizens.each do |c| %>
+      <li><%= link_to c.phone_number, c %></li>
+      <%= f.hidden_field :citizen_ids, multiple: true, value: c.id %>
+    <% end %>
+    </ul>
+  </div>
+
+  <%= f.submit %>
+<% end %>

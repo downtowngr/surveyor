@@ -12,18 +12,22 @@
         <a href="#" class="app-name">Surveyor</a>
         <%= link_to 'Polls', polls_path, class: "nav-item" %>
         <%= link_to 'Events', events_path, class: "nav-item" %>
-        <%= link_to 'Listeners', listeners_path, class: 'nav-item' %>
+        <%= link_to 'Blasts', blasts_path, class: "nav-item" %>
+        <%= link_to 'Listeners', listeners_path, class: "nav-item" %>
         <%= link_to 'Citizens', citizens_path, class: "nav-item" %>
-        <%= link_to 'Admins', users_path, class: "nav-item" %>
 
-		<div id="user_info">
-		  <ul class="list-inline">
-        <!-- TODO: Display listening phone number -->
-        <li><%= number_to_phone(Figaro.env.twilio_number) %></li>
-  		  <li><%= current_user.email %></li>
-  		  <li><%=link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-	     </ul>
-		</div>
+        <div id="user_info">
+          <ul class="list-inline">
+            <!-- TODO: Display listening phone number -->
+            <li><%= number_to_phone(Figaro.env.twilio_number) %></li>
+            <li><%= current_user.email %></li>
+            <li><%= link_to users_path do %>
+              <i class="fa fa-cog"></i>
+            <% end %></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+           </ul>
+        </div>
+
       </div>
     </nav>
 
@@ -32,8 +36,8 @@
     <% end -%>
 
     <div id="yield">
-	    <%= yield %>
-	</div>
+      <%= yield %>
+    </div>
   </body>
 </html>
 
