@@ -5,6 +5,8 @@ class Poll < ActiveRecord::Base
 
   has_many :poll_choices, dependent: :destroy
   has_many :votes, through: :poll_choices
+  has_many :citizens, -> { uniq }, through: :votes
+
   has_many :listeners, as: :listening, dependent: :destroy
 
   validates :name, presence: true

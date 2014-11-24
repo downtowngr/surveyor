@@ -6,6 +6,7 @@ class PollsController < ApplicationController
   end
 
   def show
+    @citizen_list = CitizenList.new(@poll.citizens.map(&:id))
   end
 
   def new
