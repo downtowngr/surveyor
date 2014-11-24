@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118190628) do
+ActiveRecord::Schema.define(version: 20141120212608) do
+
+  create_table "blasts", force: true do |t|
+    t.string   "name"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blasts_citizens", id: false, force: true do |t|
+    t.integer "blast_id",   null: false
+    t.integer "citizen_id", null: false
+  end
+
+  add_index "blasts_citizens", ["blast_id", "citizen_id"], name: "index_blasts_citizens_on_blast_id_and_citizen_id"
+  add_index "blasts_citizens", ["citizen_id", "blast_id"], name: "index_blasts_citizens_on_citizen_id_and_blast_id"
 
   create_table "check_ins", force: true do |t|
     t.integer  "event_id"

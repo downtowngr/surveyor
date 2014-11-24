@@ -1,0 +1,16 @@
+<h1><%= @blast.name %></h1>
+
+<div class="col-6">
+  <h2>Message</h2
+  <p><%= @blast.message %></p>
+</div>
+
+<div class="col-6">
+  <h2>Sent To</h2>
+
+  <ul>
+  <% @citizens.each do |c| %>
+    <li><%= link_to c.phone_number, c %></li>
+  <% end %>
+  </ul>
+</div>

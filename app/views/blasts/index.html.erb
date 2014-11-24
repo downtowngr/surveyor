@@ -1,0 +1,24 @@
+<h1>Blasts</h1>
+
+<% if @blasts.count > 0 %>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Date</th>
+    <th># Sent</th>
+  </thead>
+  <% @blasts.each do |blast| %>
+    <tr>
+      <td><strong><%= link_to blast.name, blast %></strong></td>
+      <td><%= blast.created_at.to_formatted_s(:MON_DAY) %></td>
+      <td><%= blast.citizens.count %></td>
+    </tr>
+  <% end %>
+</table>
+<% else %>
+  <p>You don't have any text blasts.</p>
+<% end %>
+
+<strong>Create Blast</strong>
+<br><%= link_to "to Poll respondents", polls_path %>
+<br><%= link_to "to Event attendees", events_path %>

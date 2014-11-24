@@ -28,5 +28,12 @@
 <div class="col-6">
 	<h2>Response Count</h2>
 	<div id="chart" data-poll-id="<%= @poll.id %>"></div>
+
+  <h2>Voters</h2>
+  <% @poll.citizens.each do |c| %>
+    <li><%= link_to c.phone_number, c %></li>
+  <% end %>
+
+  <%= link_to "Send Blast", new_blast_path(ids: @citizen_list.url_encoded), class: "btn" %>
 </div>
 

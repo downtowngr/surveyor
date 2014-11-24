@@ -2,6 +2,7 @@ class Citizen < ActiveRecord::Base
   has_many :votes
   has_many :poll_choices, through: :votes
   has_many :check_ins
+  has_and_belongs_to_many :blasts
 
   validates :phone_number, presence: true, uniqueness: true, length: {is: 10}
 
