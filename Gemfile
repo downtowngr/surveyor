@@ -18,6 +18,7 @@ gem "figaro"
 gem "attribute_normalizer"
 gem "liquid"
 gem "jbuilder"
+gem "sidekiq"
 
 group :development do
   gem "guard", require: false
