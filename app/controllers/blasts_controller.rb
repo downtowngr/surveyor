@@ -19,11 +19,7 @@ class BlastsController < ApplicationController
 
     if @blast.save
       @blast.citizens.each do |citizen|
-        $twilio.messages.create(
-          from: Figaro.env.twilio_number,
-          to: "+1#{citizen.phone_number}",
-          body: @blast.message
-        )
+        TwilioSend.perform_async(citizen.phone_number, @blast.message)
       end
 
       flash[:notice] = "Successfully created #{@blast.name}"
