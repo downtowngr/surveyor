@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  get "dispatch" => "dispatch#trigger"
-  get "/", to: redirect("/admin")
+  require "sidekiq/web"
+  mount Sidekiq::Web => "/sidekiq"
 
+  post "inbound" => "twilio_inbound#create"
+
+  get "/", to: redirect("/admin")
   scope "/admin" do
     root to: "polls#index"
     devise_for :users

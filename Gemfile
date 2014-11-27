@@ -19,6 +19,7 @@ gem "attribute_normalizer"
 gem "liquid"
 gem "jbuilder"
 gem "sidekiq"
+gem "sinatra", ">= 1.3.0", require: nil
 
 group :development do
   gem "guard", require: false

@@ -10,6 +10,10 @@ class Citizen < ActiveRecord::Base
     value.present? && value.size >= 10 ? value.match(/\w*(\d{10})/)[1] : nil
   end
 
+  def twilio_phone
+    "+1#{phone_number}"
+  end
+
   def current_votes(poll)
     poll_choices.where(poll: poll)
   end

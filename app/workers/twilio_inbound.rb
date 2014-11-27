@@ -1,5 +1,7 @@
-class DispatchController < ApiController
-  def trigger
+class TwilioInbound
+  include Sidekiq::Worker
+
+  def perform(twilio_params)
     @text = Text.new(twilio_params)
     @citizen = Citizen.find_or_create_by(phone_number: @text.number)
 
@@ -19,17 +21,6 @@ class DispatchController < ApiController
       end
     end
 
-    puts @text.respond_with
-
-    twiml = Twilio::TwiML::Response.new do |r|
-      r.Message @text.respond_with
-    end
-    render xml: twiml.text
-  end
-
-  private
-
-  def twilio_params
-    params.permit("Body", "From")
+    TwilioSend.perform_async(@citizen.twilio_phone, @text.respond_with)
   end
 end
