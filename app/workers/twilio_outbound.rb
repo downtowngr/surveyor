@@ -1,4 +1,4 @@
-class TwilioSend
+class TwilioOutbound
   include Sidekiq::Worker
 
   def perform(number, body)

@@ -19,7 +19,7 @@ class BlastsController < ApplicationController
 
     if @blast.save
       @blast.citizens.each do |citizen|
-        TwilioSend.perform_async(citizen.phone_number, @blast.message)
+        TwilioOutbound.perform_async(citizen.phone_number, @blast.message)
       end
 
       flash[:notice] = "Successfully created #{@blast.name}"

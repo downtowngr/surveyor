@@ -21,6 +21,6 @@ class TwilioInbound
       end
     end
 
-    TwilioSend.perform_async(@citizen.twilio_phone, @text.respond_with)
+    TwilioOutbound.perform_async(@citizen.twilio_phone, @text.respond_with)
   end
 end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe TwilioSend do
+RSpec.describe TwilioOutbound do
   describe "#perform" do
     it "sends an SMS through Twilio" do
       messages = double(:messages)
@@ -14,7 +14,7 @@ RSpec.describe TwilioSend do
                                      .with(Figaro.env.twilio_account_sid, Figaro.env.twilio_auth_token)
                                      .and_return(twilio)
 
-      worker = TwilioSend.new
+      worker = TwilioOutbound.new
       worker.perform("+15556789", "Friends!")
     end
   end

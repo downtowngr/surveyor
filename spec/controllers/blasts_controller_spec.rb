@@ -9,7 +9,7 @@ RSpec.describe BlastsController, type: :controller do
     it "queues all outbound texts" do
       citizen = create(:citizen, phone_number: "6165551234")
 
-      expect(TwilioSend).to receive(:perform_async).with("6165551234", "Run!")
+      expect(TwilioOutbound).to receive(:perform_async).with("6165551234", "Run!")
 
       post :create, blast: attributes_for(:blast, citizen_ids: [citizen.id], message: "Run!")
     end
