@@ -8,8 +8,6 @@ class Text
     # Once this becomes an ActiveRecord model, normalize with helper
     @number = Phony.normalize(params["From"])
     @body = params["Body"].strip
-
-    @keyword = @body.upcase if @body =~ /^[[[:alnum:]]|#][\w|-]+$/
   end
 
   def keyword?
