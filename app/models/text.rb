@@ -5,8 +5,9 @@ class Text
   def initialize(params)
     @params = params
 
-    @number = params["From"].split(//).last(10).join
-    @body = params["Body"]
+    # Once this becomes an ActiveRecord model, normalize with helper
+    @number = Phony.normalize(params["From"])
+    @body = params["Body"].strip
 
     @keyword = @body.upcase if @body =~ /^[[[:alnum:]]|#][\w|-]+$/
   end

@@ -4,14 +4,18 @@ class Citizen < ActiveRecord::Base
   has_many :check_ins
   has_and_belongs_to_many :blasts
 
-  validates :phone_number, presence: true, uniqueness: true, length: {is: 10}
+  validates :phone_number, presence: true, uniqueness: true
 
-  normalize_attribute :phone_number do |value|
-    value.present? && value.size >= 10 ? value.match(/\w*(\d{10})/)[1] : nil
+  # TODO: Country code should come from future Account model
+  phony_normalize :phone_number, default_country_code: "US"
+
+  # Currently assumes number is American
+  def national_phone
+    Phony.format(phone_number, format: :national, spaces: "")[1..-1]
   end
 
-  def twilio_phone
-    "+1#{phone_number}"
+  def e164_phone
+    Phony.format(phone_number, format: :international, spaces: "")
   end
 
   def current_votes(poll)
@@ -31,7 +35,7 @@ class Citizen < ActiveRecord::Base
   private
 
   def get_nationbuilder_id
-    response = $nb.call(:people, :match, mobile: phone_number)
+    response = $nb.call(:people, :match, mobile: national_phone)
 
     if response["code"] == "no_matches" || response["code"] == "multiple_matches"
       person = $nb.call(:people, :create, person: {mobile: mobile})["person"]
