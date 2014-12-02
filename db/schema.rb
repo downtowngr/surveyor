@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120212608) do
+ActiveRecord::Schema.define(version: 20141201184159) do
 
   create_table "blasts", force: true do |t|
     t.string   "name"
@@ -71,14 +71,6 @@ ActiveRecord::Schema.define(version: 20141120212608) do
   add_index "listeners", ["keyword"], name: "index_listeners_on_keyword", unique: true
   add_index "listeners", ["listening_id", "listening_type"], name: "index_listeners_on_listening_id_and_listening_type"
 
-  create_table "listening_states", force: true do |t|
-    t.string   "number"
-    t.string   "klass"
-    t.string   "event"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "poll_choices", force: true do |t|
     t.integer  "poll_id"
     t.string   "name"
@@ -98,6 +90,14 @@ ActiveRecord::Schema.define(version: 20141120212608) do
     t.datetime "updated_at"
     t.string   "strategy"
     t.string   "nationbuilder_tag"
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "prompt"
+    t.string   "nationbuilder_field"
+    t.integer  "blast_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
