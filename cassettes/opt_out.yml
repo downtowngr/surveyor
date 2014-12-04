@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://dgritest.nationbuilder.com/api/v1/tags/Opted-Out/people?access_token=14d888129f69ae12bd3104c2f62cfc7036ce95d395061d1a3cdb10dc91f0a7d0&page=1&per_page=100
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.4.0, ruby 2.1.4 (2014-10-27))
+      Accept:
+      - application/json
+      Date:
+      - Thu, 04 Dec 2014 16:41:37 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Thu, 04 Dec 2014 16:41:38 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d2740382b239160ef8eb96e64d80a316a1417711297; expires=Fri, 04-Dec-15
+        16:41:37 GMT; path=/; domain=.nationbuilder.com; HttpOnly
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"beff24b1ebb6b883a918b60d1146b374"
+      Nation-Ratelimit-Limit:
+      - '10000'
+      Nation-Ratelimit-Remaining:
+      - '9998'
+      Nation-Ratelimit-Reset:
+      - '1417737600'
+      Status:
+      - 200 OK
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - Phusion Passenger 4.0.53
+      X-Rack-Cache:
+      - miss
+      X-Ratelimit-Limit:
+      - 10s
+      X-Ratelimit-Remaining:
+      - '99'
+      X-Ratelimit-Reset:
+      - '1417711308'
+      X-Request-Id:
+      - af69e25718f82197ed9be2d9029f23cf
+      X-Runtime:
+      - '0.083126'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Via:
+      - 1.1 nationbuilder.com
+      Cf-Ray:
+      - 193973dc74bb10e1-ORD
+    body:
+      encoding: UTF-8
+      string: '{"page":1,"total_pages":1,"per_page":100,"total":1,"results":[{"birthdate":null,"city_district":null,"civicrm_id":null,"county_district":null,"county_file_id":null,"created_at":"2014-12-04T11:08:01-05:00","datatrust_id":null,"do_not_call":false,"do_not_contact":false,"dw_id":null,"email":null,"email_opt_in":true,"employer":"","external_id":null,"federal_district":null,"fire_district":null,"first_name":"Phone","has_facebook":false,"id":8,"is_twitter_follower":false,"is_volunteer":false,"judicial_district":null,"labour_region":null,"last_name":"Opt-Out","linkedin_id":null,"mobile":"6165551234","mobile_opt_in":false,"nbec_guid":null,"ngp_id":null,"note":"","occupation":"","party":null,"pf_strat_id":null,"phone":"","precinct_id":null,"primary_address":null,"profile_image_url_ssl":"https://d3n8a8pro7vhmx.cloudfront.net/assets/icons/buddy.png","recruiter_id":null,"rnc_id":null,"rnc_regid":null,"salesforce_id":null,"school_district":null,"school_sub_district":null,"sex":"","signup_type":0,"state_file_id":null,"state_lower_district":null,"state_upper_district":null,"support_level":null,"supranational_district":null,"tags":["Opted-Out"],"twitter_id":null,"twitter_name":null,"updated_at":"2014-12-04T11:08:01-05:00","van_id":null,"village_district":null,"work_phone_number":""}],"next":null,"prev":null}'
+    http_version: 
+  recorded_at: Thu, 04 Dec 2014 16:41:38 GMT
+recorded_with: VCR 2.9.3

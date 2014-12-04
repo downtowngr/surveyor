@@ -34,6 +34,8 @@ end
 group :test do
   gem "codeclimate-test-reporter", require: nil
   gem "simplecov", require: false
+  gem "vcr"
+  gem "webmock"
 end
 
 group :development, :test do
