@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202032417) do
+ActiveRecord::Schema.define(version: 20141202155936) do
 
   create_table "blasts", force: true do |t|
     t.string   "name"
@@ -70,6 +70,34 @@ ActiveRecord::Schema.define(version: 20141202032417) do
 
   add_index "keyword_listeners", ["keyword"], name: "index_keyword_listeners_on_keyword", unique: true
   add_index "keyword_listeners", ["listening_id", "listening_type"], name: "index_keyword_listeners_on_listening_id_and_listening_type"
+
+  create_table "listed_citizens", force: true do |t|
+    t.integer  "citizen_id"
+    t.integer  "list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "listed_citizens", ["citizen_id", "list_id"], name: "index_listed_citizens_on_citizen_id_and_list_id"
+  add_index "listed_citizens", ["list_id", "citizen_id"], name: "index_listed_citizens_on_list_id_and_citizen_id"
+
+  create_table "lists", force: true do |t|
+    t.string   "name"
+    t.string   "collected_from"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "number_listeners", force: true do |t|
+    t.string   "number",         null: false
+    t.integer  "listening_id",   null: false
+    t.string   "listening_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "number_listeners", ["listening_id", "listening_type"], name: "index_number_listeners_on_listening_id_and_listening_type"
+  add_index "number_listeners", ["number"], name: "index_number_listeners_on_number", unique: true
 
   create_table "poll_choices", force: true do |t|
     t.integer  "poll_id"

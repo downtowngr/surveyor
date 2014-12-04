@@ -1,5 +1,6 @@
 class ListenersController < ApplicationController
   def index
-    @listeners = Listener.all
+    @keyword_listeners = KeywordListener.all
+    @number_listeners  = NumberListener.all
   end
 end
