@@ -1,6 +1,6 @@
 class PhoneNumber
   def initialize(number)
-    number = number.to_s
+    number = number.gsub(/\D/, '').to_s
 
     if number.length == 10
       @phone_number = number.prepend("1")
