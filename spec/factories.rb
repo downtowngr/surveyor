@@ -3,7 +3,7 @@ FactoryGirl.define do
     sequence(:phone_number) { |n| "616555123#{n}" }
   end
 
-  factory :listener do
+  factory :keyword_listener do
     sequence(:keyword) { |n| "keyword#{n}" }
   end
 
@@ -36,5 +36,10 @@ FactoryGirl.define do
     sequence(:name) { |n| "Blast #{n}" }
     message "I Hear Words!"
     citizens { [FactoryGirl.create(:citizen)] }
+  end
+
+  factory :list do
+    sequence(:name) { |n| "List #{n}" }
+    collected_from "Test"
   end
 end

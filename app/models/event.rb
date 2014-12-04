@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   has_many :check_ins, dependent: :destroy
   has_many :citizens, through: :check_ins
-  has_one :listener, as: :listening, dependent: :destroy
+  has_one :keyword_listener, as: :listening, dependent: :destroy
 
   validates :name, presence: true
   validates :keyword, presence: true
