@@ -33,6 +33,10 @@ td {
 	padding: 0 2em 1em 0;
 }
 
+th {
+  text-align: left;
+}
+
 .btn {
 	padding: 0.5em;
 	background: #eee;
@@ -78,8 +82,6 @@ ul.list-inline {
 }
 
 nav {
-	background: $c-cosmic-latte;
-
 	.nav-item {
 		display: inline-block;
 		padding: 1em 0;
@@ -91,6 +93,14 @@ nav {
 		color: maroon;
 		font-size: 22px;
 	}
+}
+
+nav .lower {
+  background: $c-cosmic-latte;
+}
+
+nav .upper {
+  background: $c-cosmic-miel;
 }
 
 .nav-wrap {

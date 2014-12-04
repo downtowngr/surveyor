@@ -9,7 +9,7 @@ class List < ActiveRecord::Base
   end
 
   def self.create_from_nationbuilder_tag(tag)
-    list = create(type: "nationbuilder tag", status: "importing")
+    list = create(collected_from: "nationbuilder", status: "importing")
     ImportCitizensByNationbuilderTag.perform_async(list.id, tag)
     list
   end

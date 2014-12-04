@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202155936) do
+ActiveRecord::Schema.define(version: 20141204212312) do
 
   create_table "blasts", force: true do |t|
     t.string   "name"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20141202155936) do
     t.string   "collected_from"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "number_listeners", force: true do |t|

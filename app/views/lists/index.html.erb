@@ -1,0 +1,24 @@
+<h1>Lists</h1>
+
+<% if @lists.count > 0 %>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Count</th>
+    <th>Status</th>
+  </thead>
+  <% @lists.each do |list| %>
+    <tr>
+      <td><%= link_to list.name, list %></td>
+      <td><%= list.collected_from %></td>
+      <td><%= list.citizens.count %></td>
+      <td><%= list.status %></td>
+    </tr>
+  <% end %>
+</table>
+<% else %>
+  <p>You don't yet have any lists.</p>
+<% end %>
+
+<%= link_to 'Create List', new_list_path, class: 'btn' %>

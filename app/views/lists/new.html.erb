@@ -1,0 +1,10 @@
+<h1>Import List from Nationbuilder</h1>
+
+<%= form_for @list do |f| %>
+  <div id="nationbuilder_tag" class="form-entry">
+    <%= label_tag :nationbuilder_tag %>
+    <%= text_field_tag :nationbuilder_tag %>
+  </div>
+
+  <%= submit_tag %>
+<% end %>
