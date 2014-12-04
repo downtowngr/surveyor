@@ -2,12 +2,12 @@ class Citizen < ActiveRecord::Base
   has_many :votes
   has_many :poll_choices, through: :votes
   has_many :check_ins
+  has_many :listed_citizens
+  has_many :lists, through: :listed_citizens
+
   has_and_belongs_to_many :blasts
 
-  validates :phone_number, presence: true, uniqueness: true
-
-  # TODO: Country code should come from future Account model
-  phony_normalize :phone_number, default_country_code: "US"
+  validates :phone_number, presence: true, uniqueness: true, length: { is: 11 }
 
   # Currently assumes number is American
   def national_phone
@@ -30,6 +30,25 @@ class Citizen < ActiveRecord::Base
   def add_tag(tag)
     get_nationbuilder_id if nationbuilder_id.nil?
     $nb.call(:people, :tag_person, id: nationbuilder_id, tagging: {tag: tag})
+  end
+
+  def self.update_or_create_from_nationbuilder(person)
+    phone_number = PhoneNumber.new(person["mobile"]).national
+
+    citizen = find_by(nationbuilder_id: person["id"]) ||
+              find_or_initialize_by(phone_number: phone_number)
+
+    citizen.nationbuilder_id ||= person["id"]
+
+    citizen.assign_attributes(
+      phone_number: phone_number,
+      email: person["email"],
+      full_name: "#{person["first_name"]} #{person["last_name"]}".strip,
+      mobile_opt_in: person["mobile_opt_in"]
+    )
+
+    citizen.save!
+    citizen
   end
 
   private
