@@ -21,7 +21,6 @@ gem "jbuilder"
 gem "sidekiq"
 gem "sinatra", ">= 1.3.0", require: nil
 gem "interactor-rails"
-gem "phony_rails"
 
 group :development do
   gem "guard", require: false
