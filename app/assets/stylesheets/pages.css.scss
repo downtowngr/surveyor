@@ -65,10 +65,12 @@ th {
 }
 
 #user_info  {
-	/*border:  solid 1px;*/
-	float:  right;
+  text-align: right;
 	font-size:  16px;
 	display: inline;
+  ul {
+    margin: .2em 0;
+  }
 }
 
 ul.list-inline {
@@ -89,6 +91,8 @@ nav {
 	}
 
 	.app-name {
+    padding: 1em 0;
+    margin-left: 1em;
 		font-weight: bold;
 		color: maroon;
 		font-size: 22px;
