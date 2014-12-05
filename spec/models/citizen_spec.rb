@@ -9,6 +9,20 @@ RSpec.describe Citizen, type: :model do
     end
   end
 
+  describe "#localized_phone" do
+    it "returns a 10 digit phone number" do
+      citizen = build(:citizen, phone_number: "16165551234")
+      expect(citizen.localized_phone).to eq("6165551234")
+    end
+  end
+
+  describe "#e164_phone" do
+    it "returns an e164 formatted phone number" do
+      citizen = build(:citizen, phone_number: "16165551234")
+      expect(citizen.e164_phone).to eq("+16165551234")
+    end
+  end
+
   describe ".update_or_create_from_nationbuilder" do
     context "when a user does not exist for a given number" do
       it "creates a citizen" do

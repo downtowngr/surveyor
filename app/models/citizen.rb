@@ -9,13 +9,12 @@ class Citizen < ActiveRecord::Base
 
   validates :phone_number, presence: true, uniqueness: true, length: { is: 11 }
 
-  # Currently assumes number is American
-  def national_phone
-    Phony.format(phone_number, format: :national, spaces: "")[1..-1]
+  def localized_phone
+    PhoneNumber.new(phone_number).localized
   end
 
   def e164_phone
-    Phony.format(phone_number, format: :international, spaces: "")
+    PhoneNumber.new(phone_number).e164
   end
 
   def current_votes(poll)
@@ -54,7 +53,7 @@ class Citizen < ActiveRecord::Base
   private
 
   def get_nationbuilder_id
-    response = $nb.call(:people, :match, mobile: national_phone)
+    response = $nb.call(:people, :match, mobile: localized_phone)
 
     if response["code"] == "no_matches" || response["code"] == "multiple_matches"
       person = $nb.call(:people, :create, person: {mobile: mobile})["person"]

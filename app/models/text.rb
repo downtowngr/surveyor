@@ -6,7 +6,7 @@ class Text
     @params = params
 
     # Once this becomes an ActiveRecord model, normalize with helper
-    @number = Phony.normalize(params["From"])
+    @number = PhoneNumber.new(params["From"]).national
     @body = params["Body"].strip
   end
 
