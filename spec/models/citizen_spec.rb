@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Citizen, type: :model do
-  use_vcr_cassette :full_person
-
+RSpec.describe Citizen, type: :model, vcr: {cassette_name: :full_person} do
   describe "validations" do
     it "should require a valid phone number" do
       expect { Citizen.create(phone_number: "61616") }.not_to change { Citizen.count }

@@ -1,9 +1,7 @@
 require "rails_helper"
 
 RSpec.describe ListsController, type: :controller do
-  describe "#create" do
-    use_vcr_cassette :dummy_data
-
+  describe "#create", vcr: {cassette_name: :dummy_data} do
     it "creates a list with imported citizens" do
     end
   end
