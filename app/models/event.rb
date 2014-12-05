@@ -11,11 +11,11 @@ class Event < ActiveRecord::Base
   end
 
   after_create do
-    build_listener(keyword: keyword).save!
+    create_keyword_listener(keyword: keyword)
   end
 
   after_update do
-    listener.update_attributes!(keyword: keyword) if keyword != listener.keyword
+    keyword_listener.update_attributes!(keyword: keyword) if keyword != keyword_listener.keyword
   end
 
   def autoresponse=(response)

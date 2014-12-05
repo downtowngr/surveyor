@@ -4,7 +4,7 @@ RSpec.describe Event, :type => :model do
   describe "#respond_to" do
     let(:event) { create(:event, autoresponse: "Thanks!") }
     let(:citizen) { create(:citizen) }
-    let(:text) { Text.new({"From" => "+16161235555", "Body" => "movies"}) }
+    let(:text) { Text.new({"From" => "16161235555", "Body" => "movies"}) }
 
     context "when a user has not checked in" do
       it "returns custom autoresponse" do
@@ -49,21 +49,21 @@ RSpec.describe Event, :type => :model do
 
   describe "listener" do
     let(:event) { create(:event, keyword: "come") }
-    let!(:listener) { event.listener }
+    let!(:keyword_listener) { event.keyword_listener }
 
     it "destroys listener when deleted" do
-      expect { event.destroy }.to change { Listener.count }.by(-1)
+      expect { event.destroy }.to change { KeywordListener.count }.by(-1)
     end
 
     it "creates listener when created" do
-      expect(event.listener).not_to be nil
+      expect(event.keyword_listener).not_to be nil
     end
 
     it "updates listener when keyword is changed" do
-      expect(listener.keyword).to eq("COME")
+      expect(keyword_listener.keyword).to eq("COME")
       event.keyword = "alone"
       event.save
-      expect(listener.keyword).to eq("ALONE")
+      expect(keyword_listener.keyword).to eq("ALONE")
     end
   end
 end

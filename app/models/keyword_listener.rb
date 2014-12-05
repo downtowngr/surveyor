@@ -10,7 +10,7 @@ class KeywordListener < ActiveRecord::Base
   def self.respond_to(text, citizen)
     text.keyword = text.body.upcase if text.body =~ /^[[[:alnum:]]|#][\w|-]+$/
 
-    if text.keyword.present?
+    if text.keyword?
       listener = find_by(keyword: text.keyword)
 
       if listener.present?
