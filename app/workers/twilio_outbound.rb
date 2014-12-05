@@ -7,7 +7,7 @@ class TwilioOutbound
 
     twilio.messages.create(
       from: Figaro.env.twilio_number,
-      to: number,
+      to: PhoneNumber.new(number).e164,
       body: body
     )
   end

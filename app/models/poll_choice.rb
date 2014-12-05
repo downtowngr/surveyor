@@ -8,6 +8,6 @@ class PollChoice < ActiveRecord::Base
   end
 
   after_create do
-    poll.listeners.create(keyword: name)
+    poll.keyword_listeners.create(keyword: name)
   end
 end

@@ -1,0 +1,6 @@
+<h1>List: <%= @list.name %></h1>
+
+<strong>Type:</strong> <%= @list.collected_from %>
+<strong>Count:</strong> <%= @list.citizens.count %>
+
+<%= link_to "Send Blast to List", new_blast_path(list_id: @list.id) %>

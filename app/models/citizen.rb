@@ -2,16 +2,19 @@ class Citizen < ActiveRecord::Base
   has_many :votes
   has_many :poll_choices, through: :votes
   has_many :check_ins
+  has_many :listed_citizens
+  has_many :lists, through: :listed_citizens
+
   has_and_belongs_to_many :blasts
 
-  validates :phone_number, presence: true, uniqueness: true, length: {is: 10}
+  validates :phone_number, presence: true, uniqueness: true, length: { is: 11 }
 
-  normalize_attribute :phone_number do |value|
-    value.present? && value.size >= 10 ? value.match(/\w*(\d{10})/)[1] : nil
+  def localized_phone
+    PhoneNumber.new(phone_number).localized
   end
 
-  def twilio_phone
-    "+1#{phone_number}"
+  def e164_phone
+    PhoneNumber.new(phone_number).e164
   end
 
   def current_votes(poll)
@@ -28,10 +31,29 @@ class Citizen < ActiveRecord::Base
     $nb.call(:people, :tag_person, id: nationbuilder_id, tagging: {tag: tag})
   end
 
+  def self.update_or_create_from_nationbuilder(person)
+    phone_number = PhoneNumber.new(person["mobile"]).national
+
+    citizen = find_by(nationbuilder_id: person["id"]) ||
+              find_or_initialize_by(phone_number: phone_number)
+
+    citizen.nationbuilder_id ||= person["id"]
+
+    citizen.assign_attributes(
+      phone_number: phone_number,
+      email: person["email"],
+      full_name: "#{person["first_name"]} #{person["last_name"]}".strip,
+      mobile_opt_in: person["mobile_opt_in"]
+    )
+
+    citizen.save!
+    citizen
+  end
+
   private
 
   def get_nationbuilder_id
-    response = $nb.call(:people, :match, mobile: phone_number)
+    response = $nb.call(:people, :match, mobile: localized_phone)
 
     if response["code"] == "no_matches" || response["code"] == "multiple_matches"
       person = $nb.call(:people, :create, person: {mobile: mobile})["person"]

@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     resources :users
     resources :citizens, only: [:index, :show]
     resources :listeners, only: [:index]
+    resources :lists
   end
 end

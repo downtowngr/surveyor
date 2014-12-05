@@ -8,13 +8,8 @@
   </head>
   <body>
     <nav>
-      <div class="nav-wrap">
+      <div class="nav-wrap upper">
         <a href="#" class="app-name">Surveyor</a>
-        <%= link_to 'Polls', polls_path, class: "nav-item" %>
-        <%= link_to 'Events', events_path, class: "nav-item" %>
-        <%= link_to 'Blasts', blasts_path, class: "nav-item" %>
-        <%= link_to 'Listeners', listeners_path, class: "nav-item" %>
-        <%= link_to 'Citizens', citizens_path, class: "nav-item" %>
 
         <div id="user_info">
           <ul class="list-inline">
@@ -27,7 +22,15 @@
             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
            </ul>
         </div>
+      </div>
 
+      <div class="nav-wrap lower">
+        <%= link_to 'Polls', polls_path, class: "nav-item" %>
+        <%= link_to 'Events', events_path, class: "nav-item" %>
+        <%= link_to 'Blasts', blasts_path, class: "nav-item" %>
+        <%= link_to 'Lists', lists_path, class: "nav-item" %>
+        <%= link_to 'Listeners', listeners_path, class: "nav-item" %>
+        <%= link_to 'Citizens', citizens_path, class: "nav-item" %>
       </div>
     </nav>
 

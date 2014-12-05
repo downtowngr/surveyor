@@ -33,6 +33,10 @@ td {
 	padding: 0 2em 1em 0;
 }
 
+th {
+  text-align: left;
+}
+
 .btn {
 	padding: 0.5em;
 	background: #eee;
@@ -61,10 +65,12 @@ td {
 }
 
 #user_info  {
-	/*border:  solid 1px;*/
-	float:  right;
+  text-align: right;
 	font-size:  16px;
 	display: inline;
+  ul {
+    margin: .2em 0;
+  }
 }
 
 ul.list-inline {
@@ -78,8 +84,6 @@ ul.list-inline {
 }
 
 nav {
-	background: $c-cosmic-latte;
-
 	.nav-item {
 		display: inline-block;
 		padding: 1em 0;
@@ -87,10 +91,20 @@ nav {
 	}
 
 	.app-name {
+    padding: 1em 0;
+    margin-left: 1em;
 		font-weight: bold;
 		color: maroon;
 		font-size: 22px;
 	}
+}
+
+nav .lower {
+  background: $c-cosmic-latte;
+}
+
+nav .upper {
+  background: $c-cosmic-miel;
 }
 
 .nav-wrap {

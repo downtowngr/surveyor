@@ -11,22 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120212608) do
+ActiveRecord::Schema.define(version: 20141204222037) do
 
   create_table "blasts", force: true do |t|
     t.string   "name"
     t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "list_id"
   end
-
-  create_table "blasts_citizens", id: false, force: true do |t|
-    t.integer "blast_id",   null: false
-    t.integer "citizen_id", null: false
-  end
-
-  add_index "blasts_citizens", ["blast_id", "citizen_id"], name: "index_blasts_citizens_on_blast_id_and_citizen_id"
-  add_index "blasts_citizens", ["citizen_id", "blast_id"], name: "index_blasts_citizens_on_citizen_id_and_blast_id"
 
   create_table "check_ins", force: true do |t|
     t.integer  "event_id"
@@ -60,7 +53,7 @@ ActiveRecord::Schema.define(version: 20141120212608) do
     t.string   "nationbuilder_tag"
   end
 
-  create_table "listeners", force: true do |t|
+  create_table "keyword_listeners", force: true do |t|
     t.string   "keyword",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -68,16 +61,37 @@ ActiveRecord::Schema.define(version: 20141120212608) do
     t.string   "listening_type", null: false
   end
 
-  add_index "listeners", ["keyword"], name: "index_listeners_on_keyword", unique: true
-  add_index "listeners", ["listening_id", "listening_type"], name: "index_listeners_on_listening_id_and_listening_type"
+  add_index "keyword_listeners", ["keyword"], name: "index_keyword_listeners_on_keyword", unique: true
+  add_index "keyword_listeners", ["listening_id", "listening_type"], name: "index_keyword_listeners_on_listening_id_and_listening_type"
 
-  create_table "listening_states", force: true do |t|
-    t.string   "number"
-    t.string   "klass"
-    t.string   "event"
+  create_table "listed_citizens", force: true do |t|
+    t.integer  "citizen_id"
+    t.integer  "list_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "listed_citizens", ["citizen_id", "list_id"], name: "index_listed_citizens_on_citizen_id_and_list_id"
+  add_index "listed_citizens", ["list_id", "citizen_id"], name: "index_listed_citizens_on_list_id_and_citizen_id"
+
+  create_table "lists", force: true do |t|
+    t.string   "name"
+    t.string   "collected_from"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
+  end
+
+  create_table "number_listeners", force: true do |t|
+    t.string   "number",         null: false
+    t.integer  "listening_id",   null: false
+    t.string   "listening_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "number_listeners", ["listening_id", "listening_type"], name: "index_number_listeners_on_listening_id_and_listening_type"
+  add_index "number_listeners", ["number"], name: "index_number_listeners_on_number", unique: true
 
   create_table "poll_choices", force: true do |t|
     t.integer  "poll_id"
@@ -98,6 +112,14 @@ ActiveRecord::Schema.define(version: 20141120212608) do
     t.datetime "updated_at"
     t.string   "strategy"
     t.string   "nationbuilder_tag"
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "prompt"
+    t.string   "nationbuilder_field"
+    t.integer  "blast_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

@@ -1,7 +1,23 @@
 <h1>Listeners</h1>
 
-<ul>
-  <% @listeners.each do |listener| %>
-    <li><%= listener.keyword %> - <%= listener.listening.name %></li>
-  <% end  %>
-</ul>
+<h3>Keywords</h3>
+<% if @keyword_listeners.empty? %>
+  Currently not listening for any keywords.
+<% else %>
+  <ul>
+    <% @keyword_listeners.each do |listener| %>
+      <li><%= listener.keyword %> - <%= listener.listening.name %></li>
+    <% end  %>
+  </ul>
+<% end %>
+
+<h3>Numbers</h3>
+<% if @number_listeners.empty? %>
+  Currently not listening for any numbers.
+<% else %>
+  <ul>
+    <% @number_listeners.each do |listener| %>
+      <li><%= listener.number %> - <%= listener.listening.name %></li>
+    <% end %>
+  </ul>
+<% end %>

@@ -20,6 +20,7 @@ gem "liquid"
 gem "jbuilder"
 gem "sidekiq"
 gem "sinatra", ">= 1.3.0", require: nil
+gem "interactor-rails"
 
 group :development do
   gem "guard", require: false
@@ -32,6 +33,9 @@ end
 group :test do
   gem "codeclimate-test-reporter", require: nil
   gem "simplecov", require: false
+  gem "vcr"
+  gem "webmock"
+  gem "timecop"
 end
 
 group :development, :test do
