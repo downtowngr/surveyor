@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :citizen do
-    sequence(:phone_number) { |n| "616555123#{n}" }
+    phone_number { "1#{Faker::Number.number(10)}" }
   end
 
   factory :keyword_listener do
@@ -35,7 +35,6 @@ FactoryGirl.define do
   factory :blast do
     sequence(:name) { |n| "Blast #{n}" }
     message "I Hear Words!"
-    citizens { [FactoryGirl.create(:citizen)] }
   end
 
   factory :list do

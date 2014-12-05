@@ -11,17 +11,14 @@ class BlastsController < ApplicationController
 
   def new
     @blast = Blast.new
-    @citizens = Citizen.find(CitizenList.new(params[:ids]).array)
+    @citizens = List.find(params[:list_id]).citizens
   end
 
   def create
     @blast = Blast.new(blast_params)
 
     if @blast.save
-      @blast.citizens.each do |citizen|
-        TwilioOutbound.perform_async(citizen.phone_number, @blast.message)
-      end
-
+      SendBlastToList.perform_async(@blast.id)
       flash[:notice] = "Successfully created #{@blast.name}"
       redirect_to blast_path(@blast)
     else
@@ -36,6 +33,6 @@ class BlastsController < ApplicationController
   end
 
   def blast_params
-    params.require(:blast).permit(:name, :message, citizen_ids: [])
+    params.require(:blast).permit(:name, :message, :list_id)
   end
 end

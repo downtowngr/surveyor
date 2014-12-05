@@ -1,6 +1,11 @@
 class Blast < ActiveRecord::Base
-  has_and_belongs_to_many :citizens
+  belongs_to :list
   has_many :questions
 
+  def citizens
+    list.citizens
+  end
+
+  validates :list_id, presence: true
   validates :message, presence: true, length: { maximum: 160 }
 end
