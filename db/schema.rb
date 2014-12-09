@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204222037) do
+ActiveRecord::Schema.define(version: 20141208175201) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "blasts", force: true do |t|
     t.string   "name"
@@ -28,8 +31,8 @@ ActiveRecord::Schema.define(version: 20141204222037) do
     t.datetime "updated_at"
   end
 
-  add_index "check_ins", ["citizen_id"], name: "index_check_ins_on_citizen_id"
-  add_index "check_ins", ["event_id"], name: "index_check_ins_on_event_id"
+  add_index "check_ins", ["citizen_id"], name: "index_check_ins_on_citizen_id", using: :btree
+  add_index "check_ins", ["event_id"], name: "index_check_ins_on_event_id", using: :btree
 
   create_table "citizens", force: true do |t|
     t.string   "phone_number"
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 20141204222037) do
     t.integer  "nationbuilder_id"
     t.string   "full_name"
     t.string   "email"
-    t.boolean  "mobile_opt_in"
+    t.boolean  "mobile_opt_in",    default: true, null: false
   end
 
   create_table "events", force: true do |t|
@@ -61,8 +64,8 @@ ActiveRecord::Schema.define(version: 20141204222037) do
     t.string   "listening_type", null: false
   end
 
-  add_index "keyword_listeners", ["keyword"], name: "index_keyword_listeners_on_keyword", unique: true
-  add_index "keyword_listeners", ["listening_id", "listening_type"], name: "index_keyword_listeners_on_listening_id_and_listening_type"
+  add_index "keyword_listeners", ["keyword"], name: "index_keyword_listeners_on_keyword", unique: true, using: :btree
+  add_index "keyword_listeners", ["listening_id", "listening_type"], name: "index_keyword_listeners_on_listening_id_and_listening_type", using: :btree
 
   create_table "listed_citizens", force: true do |t|
     t.integer  "citizen_id"
@@ -71,8 +74,8 @@ ActiveRecord::Schema.define(version: 20141204222037) do
     t.datetime "updated_at"
   end
 
-  add_index "listed_citizens", ["citizen_id", "list_id"], name: "index_listed_citizens_on_citizen_id_and_list_id"
-  add_index "listed_citizens", ["list_id", "citizen_id"], name: "index_listed_citizens_on_list_id_and_citizen_id"
+  add_index "listed_citizens", ["citizen_id", "list_id"], name: "index_listed_citizens_on_citizen_id_and_list_id", using: :btree
+  add_index "listed_citizens", ["list_id", "citizen_id"], name: "index_listed_citizens_on_list_id_and_citizen_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "name"
@@ -90,8 +93,8 @@ ActiveRecord::Schema.define(version: 20141204222037) do
     t.datetime "updated_at"
   end
 
-  add_index "number_listeners", ["listening_id", "listening_type"], name: "index_number_listeners_on_listening_id_and_listening_type"
-  add_index "number_listeners", ["number"], name: "index_number_listeners_on_number", unique: true
+  add_index "number_listeners", ["listening_id", "listening_type"], name: "index_number_listeners_on_listening_id_and_listening_type", using: :btree
+  add_index "number_listeners", ["number"], name: "index_number_listeners_on_number", unique: true, using: :btree
 
   create_table "poll_choices", force: true do |t|
     t.integer  "poll_id"
@@ -101,7 +104,7 @@ ActiveRecord::Schema.define(version: 20141204222037) do
     t.datetime "updated_at"
   end
 
-  add_index "poll_choices", ["poll_id"], name: "index_poll_choices_on_poll_id"
+  add_index "poll_choices", ["poll_id"], name: "index_poll_choices_on_poll_id", using: :btree
 
   create_table "polls", force: true do |t|
     t.string   "name"
@@ -116,10 +119,12 @@ ActiveRecord::Schema.define(version: 20141204222037) do
 
   create_table "questions", force: true do |t|
     t.string   "prompt"
-    t.string   "nationbuilder_field"
     t.integer  "blast_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "autoresponse"
+    t.string   "citizen_attribute"
+    t.text     "nationbuilder_tags", default: [], array: true
   end
 
   create_table "users", force: true do |t|
@@ -137,8 +142,8 @@ ActiveRecord::Schema.define(version: 20141204222037) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: true do |t|
     t.integer  "poll_choice_id"
@@ -147,7 +152,7 @@ ActiveRecord::Schema.define(version: 20141204222037) do
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["citizen_id"], name: "index_votes_on_citizen_id"
-  add_index "votes", ["poll_choice_id"], name: "index_votes_on_poll_choice_id"
+  add_index "votes", ["citizen_id"], name: "index_votes_on_citizen_id", using: :btree
+  add_index "votes", ["poll_choice_id"], name: "index_votes_on_poll_choice_id", using: :btree
 
 end

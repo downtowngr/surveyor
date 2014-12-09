@@ -5,6 +5,12 @@ FactoryGirl.define do
 
   factory :keyword_listener do
     sequence(:keyword) { |n| "keyword#{n}" }
+    listening { create(:poll) }
+  end
+
+  factory :number_listener do
+    number { "1#{Faker::Number.number(10)}" }
+    listening { create(:question) }
   end
 
   factory :poll_choice do
@@ -35,10 +41,18 @@ FactoryGirl.define do
   factory :blast do
     sequence(:name) { |n| "Blast #{n}" }
     message "I Hear Words!"
+    list
   end
 
   factory :list do
     sequence(:name) { |n| "List #{n}" }
     collected_from "Test"
+  end
+
+  factory :question do
+    blast
+    prompt "Email:"
+    autoresponse "Thanks!"
+    citizen_attribute "email"
   end
 end

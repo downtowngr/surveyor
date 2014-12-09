@@ -1,12 +1,12 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  database: db/surveyor_development.sqlite3
+  database: surveyor_development
 
 test:
   <<: *default
-  database: db/surveyor_test.sqlite3
+  database: surveyor_test
