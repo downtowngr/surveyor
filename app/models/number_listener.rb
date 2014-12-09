@@ -3,7 +3,7 @@ class NumberListener < ActiveRecord::Base
 
   validates :number, presence: true
 
-  def self.respond_to(text, citizen)
-
+  def respond_to(text, citizen)
+    listening.respond_to(text, citizen)
   end
 end
