@@ -6,18 +6,18 @@ RSpec.describe Question, type: :model do
                            nationbuilder_tags: ["Send-Email"]) }
 
   let!(:citizen) { create(:citizen, phone_number: "16165551234") }
-  let!(:text) { double(:text, body: "dude@example.com") }
+  let!(:text) { Text.new({"Body"=>"dude@example.com", "From"=>"16165551234"}) }
 
   describe "#respond_to" do
     it "sets citizen_attribute and nationbuilder tags on citizen" do
       expect(citizen).to receive(:sync_to_nationbuilder!)
-      expect(TwilioOutbound).to receive(:perform_async).with(citizen.e164_phone, "Thanks!")
       expect(question).to receive(:destroy_listener).with(citizen)
 
       question.respond_to(text, citizen)
 
       expect(citizen.email).to eq("dude@example.com")
       expect(citizen.nationbuilder_tags).to eq(["Send-Email"])
+      expect(text.respond_with).to eq("Thanks!")
     end
   end
 

@@ -1,6 +1,4 @@
 class Question < ActiveRecord::Base
-  CITIZEN_ATTRIBUTES = {email: "email"}
-
   belongs_to :blast
 
   has_many :number_listeners, as: :listening, dependent: :destroy
@@ -14,7 +12,8 @@ class Question < ActiveRecord::Base
     citizen.sync_to_nationbuilder!
 
     destroy_listener(citizen)
-    TwilioOutbound.perform_async(citizen.e164_phone, autoresponse)
+    # TODO: Will need to ask blast for next question
+    text.respond_with = autoresponse
   end
 
   def create_listener(citizen)
