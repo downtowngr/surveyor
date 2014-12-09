@@ -3,9 +3,7 @@ require "rails_helper"
 RSpec.describe ImportCitizensByNationbuilderTag do
   let(:list) { create(:list) }
 
-  context "person with mobile number" do
-    use_vcr_cassette :real_person
-
+  context "person with mobile number", vcr: {cassette_name: :real_person} do
     it "creates a citizen with a phone number" do
       expect {
         ImportCitizensByNationbuilderTag.new.perform(list.id, "Real-Person")
@@ -20,9 +18,7 @@ RSpec.describe ImportCitizensByNationbuilderTag do
     end
   end
 
-  context "person without mobile number" do
-    use_vcr_cassette :no_phone
-
+  context "person without mobile number", vcr: {cassette_name: :no_phone} do
     it "does not create a citizen" do
       expect {
         ImportCitizensByNationbuilderTag.new.perform(list.id, "No-Phone")
@@ -30,9 +26,7 @@ RSpec.describe ImportCitizensByNationbuilderTag do
     end
   end
 
-  context "person opted-out of mobile" do
-    use_vcr_cassette :opt_out
-
+  context "person opted-out of mobile", vcr: {cassette_name: :opt_out} do
     it "does not create a citizen" do
       expect {
         ImportCitizensByNationbuilderTag.new.perform(list.id, "Opted-Out")
@@ -40,9 +34,7 @@ RSpec.describe ImportCitizensByNationbuilderTag do
     end
   end
 
-  context "correctly paginates over hundreds of results" do
-    use_vcr_cassette :dummy_data
-
+  context "correctly paginates over hundreds of results", vcr: {cassette_name: :dummy_data} do
     it "creates hundreds of citizens" do
       expect {
         ImportCitizensByNationbuilderTag.new.perform(list.id, "Dummy-Data")

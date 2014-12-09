@@ -1,0 +1,147 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://dgritest.nationbuilder.com/api/v1/people/push?access_token=14d888129f69ae12bd3104c2f62cfc7036ce95d395061d1a3cdb10dc91f0a7d0
+    body:
+      encoding: UTF-8
+      string: '{"person":{"id":null,"mobile":"6165559989","email":null,"mobile_opt_in":true},"access_token":"14d888129f69ae12bd3104c2f62cfc7036ce95d395061d1a3cdb10dc91f0a7d0"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.4.0, ruby 2.1.4 (2014-10-27))
+      Accept:
+      - application/json
+      Date:
+      - Mon, 08 Dec 2014 19:49:29 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Mon, 08 Dec 2014 19:49:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dba5fa26b0c807a3f49a28a023013b13a1418068169; expires=Tue, 08-Dec-15
+        19:49:29 GMT; path=/; domain=.nationbuilder.com; HttpOnly
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"ff9fd3bd7863fdb65310ae969b3775ee"
+      Nation-Ratelimit-Limit:
+      - '10000'
+      Nation-Ratelimit-Remaining:
+      - '9982'
+      Nation-Ratelimit-Reset:
+      - '1418083200'
+      Status:
+      - 200 OK
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - Phusion Passenger 4.0.53
+      X-Rack-Cache:
+      - invalidate, pass
+      X-Ratelimit-Limit:
+      - 10s
+      X-Ratelimit-Remaining:
+      - '99'
+      X-Ratelimit-Reset:
+      - '1418068179'
+      X-Request-Id:
+      - db26bf7b557970f3a65009e7e3dc0815
+      X-Runtime:
+      - '0.637144'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Via:
+      - 1.1 nationbuilder.com
+      Cf-Ray:
+      - 195b7c8b0eec10db-ORD
+    body:
+      encoding: UTF-8
+      string: '{"person":{"birthdate":null,"city_district":null,"civicrm_id":null,"county_district":null,"county_file_id":null,"created_at":"2014-12-08T14:49:30-05:00","datatrust_id":null,"do_not_call":false,"do_not_contact":false,"dw_id":null,"email":null,"email_opt_in":true,"employer":null,"external_id":null,"federal_district":null,"fire_district":null,"first_name":"","has_facebook":false,"id":269,"is_twitter_follower":false,"is_volunteer":false,"judicial_district":null,"labour_region":null,"last_name":"","linkedin_id":null,"mobile":"6165559989","mobile_opt_in":true,"nbec_guid":null,"ngp_id":null,"note":null,"occupation":null,"party":null,"pf_strat_id":null,"phone":null,"precinct_id":null,"primary_address":null,"profile_image_url_ssl":"https://d3n8a8pro7vhmx.cloudfront.net/assets/icons/buddy.png","recruiter_id":null,"rnc_id":null,"rnc_regid":null,"salesforce_id":null,"school_district":null,"school_sub_district":null,"sex":null,"signup_type":0,"state_file_id":null,"state_lower_district":null,"state_upper_district":null,"support_level":null,"supranational_district":null,"tags":[],"twitter_id":null,"twitter_name":null,"updated_at":"2014-12-08T14:49:30-05:00","van_id":null,"village_district":null,"work_phone_number":null,"active_customer_expires_at":null,"active_customer_started_at":null,"author":null,"author_id":null,"auto_import_id":null,"availability":null,"banned_at":null,"billing_address":null,"bio":null,"call_status_id":null,"call_status_name":null,"capital_amount_in_cents":500,"children_count":0,"church":null,"city_sub_district":null,"closed_invoices_amount_in_cents":null,"closed_invoices_count":null,"contact_status_id":null,"contact_status_name":null,"could_vote_status":null,"demo":null,"donations_amount_in_cents":null,"donations_amount_this_cycle_in_cents":null,"donations_count":null,"donations_count_this_cycle":null,"donations_pledged_amount_in_cents":null,"donations_raised_amount_in_cents":null,"donations_raised_amount_this_cycle_in_cents":null,"donations_raised_count":null,"donations_raised_count_this_cycle":null,"donations_to_raise_amount_in_cents":null,"email1":null,"email1_is_bad":false,"email2":null,"email2_is_bad":false,"email3":null,"email3_is_bad":false,"email4":null,"email4_is_bad":false,"ethnicity":null,"facebook_address":null,"facebook_profile_url":null,"facebook_updated_at":null,"facebook_username":null,"fax_number":null,"federal_donotcall":false,"first_donated_at":null,"first_fundraised_at":null,"first_invoice_at":null,"first_prospect_at":null,"first_recruited_at":null,"first_supporter_at":"2014-12-08T14:49:30-05:00","first_volunteer_at":null,"full_name":"","home_address":null,"import_id":null,"inferred_party":null,"inferred_support_level":null,"invoice_payments_amount_in_cents":null,"invoice_payments_referred_amount_in_cents":null,"invoices_amount_in_cents":null,"invoices_count":null,"is_deceased":false,"is_donor":false,"is_fundraiser":false,"is_ignore_donation_limits":false,"is_leaderboardable":true,"is_mobile_bad":false,"is_possible_duplicate":false,"is_profile_private":false,"is_profile_searchable":true,"is_prospect":false,"is_supporter":true,"is_survey_question_private":false,"language":null,"last_call_id":null,"last_contacted_at":null,"last_contacted_by":null,"last_donated_at":null,"last_fundraised_at":null,"last_invoice_at":null,"last_rule_violation_at":null,"legal_name":null,"locale":null,"mailing_address":null,"marital_status":null,"media_market_name":null,"meetup_address":null,"membership_expires_at":null,"membership_level_name":null,"membership_started_at":null,"middle_name":null,"mobile_normalized":"6165559989","nbec_precinct_code":null,"note_updated_at":null,"outstanding_invoices_amount_in_cents":null,"outstanding_invoices_count":null,"overdue_invoices_count":null,"page_slug":null,"parent":null,"parent_id":null,"party_member":null,"phone_normalized":null,"phone_time":null,"precinct_code":null,"precinct_name":null,"prefix":null,"previous_party":null,"primary_email_id":null,"priority_level":null,"priority_level_changed_at":null,"profile_content":null,"profile_content_html":null,"profile_headline":null,"received_capital_amount_in_cents":500,"recruiter":null,"recruits_count":0,"registered_address":null,"registered_at":null,"religion":null,"rule_violations_count":0,"spent_capital_amount_in_cents":0,"submitted_address":null,"subnations":[],"suffix":null,"support_level_changed_at":null,"support_probability_score":null,"turnout_probability_score":null,"twitter_address":null,"twitter_description":null,"twitter_followers_count":null,"twitter_friends_count":null,"twitter_location":null,"twitter_login":null,"twitter_updated_at":null,"twitter_website":null,"unsubscribed_at":null,"user_submitted_address":null,"username":null,"warnings_count":0,"website":null,"work_address":null},"precinct":null}'
+    http_version: 
+  recorded_at: Mon, 08 Dec 2014 19:49:30 GMT
+- request:
+    method: get
+    uri: https://dgritest.nationbuilder.com/api/v1/people/269?access_token=14d888129f69ae12bd3104c2f62cfc7036ce95d395061d1a3cdb10dc91f0a7d0
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.4.0, ruby 2.1.4 (2014-10-27))
+      Accept:
+      - application/json
+      Date:
+      - Mon, 08 Dec 2014 19:49:30 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Mon, 08 Dec 2014 19:49:31 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d41a46de41f884f02eef2d5e3db0c240b1418068170; expires=Tue, 08-Dec-15
+        19:49:30 GMT; path=/; domain=.nationbuilder.com; HttpOnly
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"ff9fd3bd7863fdb65310ae969b3775ee"
+      Nation-Ratelimit-Limit:
+      - '10000'
+      Nation-Ratelimit-Remaining:
+      - '9981'
+      Nation-Ratelimit-Reset:
+      - '1418083200'
+      Status:
+      - 200 OK
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - Phusion Passenger 4.0.53
+      X-Rack-Cache:
+      - miss
+      X-Ratelimit-Limit:
+      - 10s
+      X-Ratelimit-Remaining:
+      - '98'
+      X-Ratelimit-Reset:
+      - '1418068179'
+      X-Request-Id:
+      - bad00703858bad4e01909741fd3eb1fa
+      X-Runtime:
+      - '0.573622'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Via:
+      - 1.1 nationbuilder.com
+      Cf-Ray:
+      - 195b7c90ab5b10e1-ORD
+    body:
+      encoding: UTF-8
+      string: '{"person":{"birthdate":null,"city_district":null,"civicrm_id":null,"county_district":null,"county_file_id":null,"created_at":"2014-12-08T14:49:30-05:00","datatrust_id":null,"do_not_call":false,"do_not_contact":false,"dw_id":null,"email":null,"email_opt_in":true,"employer":null,"external_id":null,"federal_district":null,"fire_district":null,"first_name":"","has_facebook":false,"id":269,"is_twitter_follower":false,"is_volunteer":false,"judicial_district":null,"labour_region":null,"last_name":"","linkedin_id":null,"mobile":"6165559989","mobile_opt_in":true,"nbec_guid":null,"ngp_id":null,"note":null,"occupation":null,"party":null,"pf_strat_id":null,"phone":null,"precinct_id":null,"primary_address":null,"profile_image_url_ssl":"https://d3n8a8pro7vhmx.cloudfront.net/assets/icons/buddy.png","recruiter_id":null,"rnc_id":null,"rnc_regid":null,"salesforce_id":null,"school_district":null,"school_sub_district":null,"sex":null,"signup_type":0,"state_file_id":null,"state_lower_district":null,"state_upper_district":null,"support_level":null,"supranational_district":null,"tags":[],"twitter_id":null,"twitter_name":null,"updated_at":"2014-12-08T14:49:30-05:00","van_id":null,"village_district":null,"work_phone_number":null,"active_customer_expires_at":null,"active_customer_started_at":null,"author":null,"author_id":null,"auto_import_id":null,"availability":null,"banned_at":null,"billing_address":null,"bio":null,"call_status_id":null,"call_status_name":null,"capital_amount_in_cents":500,"children_count":0,"church":null,"city_sub_district":null,"closed_invoices_amount_in_cents":null,"closed_invoices_count":null,"contact_status_id":null,"contact_status_name":null,"could_vote_status":null,"demo":null,"donations_amount_in_cents":null,"donations_amount_this_cycle_in_cents":null,"donations_count":null,"donations_count_this_cycle":null,"donations_pledged_amount_in_cents":null,"donations_raised_amount_in_cents":null,"donations_raised_amount_this_cycle_in_cents":null,"donations_raised_count":null,"donations_raised_count_this_cycle":null,"donations_to_raise_amount_in_cents":null,"email1":null,"email1_is_bad":false,"email2":null,"email2_is_bad":false,"email3":null,"email3_is_bad":false,"email4":null,"email4_is_bad":false,"ethnicity":null,"facebook_address":null,"facebook_profile_url":null,"facebook_updated_at":null,"facebook_username":null,"fax_number":null,"federal_donotcall":false,"first_donated_at":null,"first_fundraised_at":null,"first_invoice_at":null,"first_prospect_at":null,"first_recruited_at":null,"first_supporter_at":"2014-12-08T14:49:30-05:00","first_volunteer_at":null,"full_name":"","home_address":null,"import_id":null,"inferred_party":null,"inferred_support_level":null,"invoice_payments_amount_in_cents":null,"invoice_payments_referred_amount_in_cents":null,"invoices_amount_in_cents":null,"invoices_count":null,"is_deceased":false,"is_donor":false,"is_fundraiser":false,"is_ignore_donation_limits":false,"is_leaderboardable":true,"is_mobile_bad":false,"is_possible_duplicate":false,"is_profile_private":false,"is_profile_searchable":true,"is_prospect":false,"is_supporter":true,"is_survey_question_private":false,"language":null,"last_call_id":null,"last_contacted_at":null,"last_contacted_by":null,"last_donated_at":null,"last_fundraised_at":null,"last_invoice_at":null,"last_rule_violation_at":null,"legal_name":null,"locale":null,"mailing_address":null,"marital_status":null,"media_market_name":null,"meetup_address":null,"membership_expires_at":null,"membership_level_name":null,"membership_started_at":null,"middle_name":null,"mobile_normalized":"6165559989","nbec_precinct_code":null,"note_updated_at":null,"outstanding_invoices_amount_in_cents":null,"outstanding_invoices_count":null,"overdue_invoices_count":null,"page_slug":null,"parent":null,"parent_id":null,"party_member":null,"phone_normalized":null,"phone_time":null,"precinct_code":null,"precinct_name":null,"prefix":null,"previous_party":null,"primary_email_id":null,"priority_level":null,"priority_level_changed_at":null,"profile_content":null,"profile_content_html":null,"profile_headline":null,"received_capital_amount_in_cents":500,"recruiter":null,"recruits_count":0,"registered_address":null,"registered_at":null,"religion":null,"rule_violations_count":0,"spent_capital_amount_in_cents":0,"submitted_address":null,"subnations":[],"suffix":null,"support_level_changed_at":null,"support_probability_score":null,"turnout_probability_score":null,"twitter_address":null,"twitter_description":null,"twitter_followers_count":null,"twitter_friends_count":null,"twitter_location":null,"twitter_login":null,"twitter_updated_at":null,"twitter_website":null,"unsubscribed_at":null,"user_submitted_address":null,"username":null,"warnings_count":0,"website":null,"work_address":null},"precinct":null}'
+    http_version: 
+  recorded_at: Mon, 08 Dec 2014 19:49:30 GMT
+recorded_with: VCR 2.9.3

@@ -15,5 +15,29 @@ RSpec.describe SendBlastToList do
 
       SendBlastToList.new.perform(blast.id)
     end
+
+    context "blast has question" do
+      let!(:question) { create(:question, blast: blast) }
+
+      it "sends question" do
+        Blast.stub(:find).with(blast.id).and_return(blast)
+
+        expect(blast).to receive(:send_question).with(citizen1)
+        expect(blast).to receive(:send_question).with(citizen2)
+
+        SendBlastToList.new.perform(blast.id)
+      end
+    end
+
+    context "blast has no question" do
+      it "does not send question" do
+        Blast.stub(:find).with(blast.id).and_return(blast)
+
+        expect(blast).not_to receive(:send_question).with(citizen1)
+        expect(blast).not_to receive(:send_question).with(citizen2)
+
+        SendBlastToList.new.perform(blast.id)
+      end
+    end
   end
 end
