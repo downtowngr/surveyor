@@ -6,6 +6,7 @@ class SendBlastToList
 
     @blast.citizens.each do |citizen|
       TwilioOutbound.perform_async(citizen.phone_number, @blast.message)
+      @blast.send_question(citizen) if @blast.has_question?
     end
   end
 end
