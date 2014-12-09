@@ -5,8 +5,6 @@ class Citizen < ActiveRecord::Base
   has_many :listed_citizens
   has_many :lists, through: :listed_citizens
 
-  has_and_belongs_to_many :blasts
-
   validates :phone_number, presence: true, uniqueness: true, length: { is: 11 }
 
   attr_accessor :nationbuilder_tags
