@@ -6,6 +6,7 @@ class Citizen < ActiveRecord::Base
   has_many :lists, through: :listed_citizens
 
   validates :phone_number, presence: true, uniqueness: true, length: { is: 11 }
+  validates :email, email: true, allow_blank: true
 
   attr_accessor :nationbuilder_tags
 

@@ -6,18 +6,54 @@ RSpec.describe Question, type: :model do
                            nationbuilder_tags: ["Send-Email"]) }
 
   let!(:citizen) { create(:citizen, phone_number: "16165551234") }
-  let!(:text) { Text.new({"Body"=>"dude@example.com", "From"=>"16165551234"}) }
 
   describe "#respond_to" do
-    it "sets citizen_attribute and nationbuilder tags on citizen" do
-      expect(citizen).to receive(:sync_to_nationbuilder!)
-      expect(question).to receive(:destroy_listener).with(citizen)
+    context "when email is valid" do
+      it "sets citizen_attribute and nationbuilder tags on citizen" do
+        text = Text.new({"Body"=>"dude@example.us", "From"=>"16165551234"})
 
-      question.respond_to(text, citizen)
+        expect(citizen).to receive(:sync_to_nationbuilder!)
+        expect(question).to receive(:destroy_listener).with(citizen)
 
-      expect(citizen.email).to eq("dude@example.com")
-      expect(citizen.nationbuilder_tags).to eq(["Send-Email"])
-      expect(text.respond_with).to eq("Thanks!")
+        question.respond_to(text, citizen)
+        expect(citizen.email).to eq("dude@example.us")
+        expect(citizen.nationbuilder_tags).to eq(["Send-Email"])
+        expect(text.respond_with).to eq("Thanks!")
+      end
+
+      it "sets citizen_attribute and nationbuilder tags on citizen" do
+        text = Text.new({"Body"=>"  dude@example.us ", "From"=>"16165551234"})
+
+        expect(citizen).to receive(:sync_to_nationbuilder!)
+        expect(question).to receive(:destroy_listener).with(citizen)
+
+        question.respond_to(text, citizen)
+        expect(citizen.email).to eq("dude@example.us")
+        expect(citizen.nationbuilder_tags).to eq(["Send-Email"])
+        expect(text.respond_with).to eq("Thanks!")
+      end
+    end
+
+    context "when email is invalid" do
+      it "responds with email error message" do
+        text = Text.new({"Body"=>"dude@example", "From"=>"16165551234"})
+
+        expect(citizen).not_to receive(:sync_to_nationbuilder!)
+        expect(question).not_to receive(:destroy_listener)
+
+        question.respond_to(text, citizen)
+        expect(text.respond_with).to eq("Sorry, that doesn't look like an email. Please try again. :)")
+      end
+
+      it "response with email error message" do
+        text = Text.new({"Body"=>"what", "From"=>"16165551234"})
+
+        expect(citizen).not_to receive(:sync_to_nationbuilder!)
+        expect(question).not_to receive(:destroy_listener)
+
+        question.respond_to(text, citizen)
+        expect(text.respond_with).to eq("Sorry, that doesn't look like an email. Please try again. :)")
+      end
     end
   end
 
