@@ -31,7 +31,7 @@ class Citizen < ActiveRecord::Base
                            mobile_opt_in: mobile_opt_in
                          })
 
-    update(nationbuilder_id: response["person"]["id"]) if nationbuilder_id.nil?
+    update(nationbuilder_id: response["person"]["id"])
     add_tags!(nationbuilder_tags) if nationbuilder_tags.present?
   end
 
