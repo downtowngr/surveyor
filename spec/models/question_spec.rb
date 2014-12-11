@@ -42,7 +42,7 @@ RSpec.describe Question, type: :model do
         expect(question).not_to receive(:destroy_listener)
 
         question.respond_to(text, citizen)
-        expect(text.respond_with).to eq("Sorry, that doesn't look like an email. Please try again. :)")
+        expect(text.respond_with).to eq("Sorry, that doesn't look like an email. Text STOP to end.")
       end
 
       it "response with email error message" do
@@ -52,7 +52,7 @@ RSpec.describe Question, type: :model do
         expect(question).not_to receive(:destroy_listener)
 
         question.respond_to(text, citizen)
-        expect(text.respond_with).to eq("Sorry, that doesn't look like an email. Please try again. :)")
+        expect(text.respond_with).to eq("Sorry, that doesn't look like an email. Text STOP to end.")
       end
     end
   end

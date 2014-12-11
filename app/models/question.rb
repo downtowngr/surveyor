@@ -16,7 +16,7 @@ class Question < ActiveRecord::Base
       # TODO: Will need to ask blast for next question
       text.respond_with = autoresponse
     elsif citizen.errors.get(citizen_attribute.to_sym).present?
-      text.respond_with = "Sorry, that doesn't look like an #{citizen_attribute}. Please try again. :)"
+      text.respond_with = "Sorry, that doesn't look like an #{citizen_attribute}. Text STOP to end."
     end
   end
 
