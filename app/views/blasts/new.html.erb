@@ -12,15 +12,11 @@
     <%= f.text_area :message %>
   </div>
 
-  <h2>Sending To</h2>
+  <h2>Send To</h2>
 
-  <div id="citizens">
-    <ul>
-    <% @citizens.each do |c| %>
-      <li><%= link_to c.phone_number, c %></li>
-      <%= f.hidden_field :citizen_ids, multiple: true, value: c.id %>
-    <% end %>
-    </ul>
+  <div id="list">
+    <%= link_to @list.name, @list %>
+    <%= f.hidden_field :list_id, value: @list.id %>
   </div>
 
   <%= f.submit %>

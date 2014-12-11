@@ -1,0 +1,21 @@
+<h1>New Question</h1>
+
+<%= form_for [@blast, @question] do |f| %>
+
+  <div id="prompt" class="form-entry">
+    <%= f.label :prompt %>
+    <%= f.text_area :prompt %>
+  </div>
+
+  <div id="autoresponse" class="form-entry">
+    <%= f.label :autoresponse %>
+    <%= f.text_area :autoresponse %>
+  </div>
+
+  <div id="citizen_attribute" class="form-entry">
+    <%= f.label :citizen_attribute %>
+    <%= f.hidden_field :citizen_attribute, value: "email" %>
+  </div>
+
+  <%= f.submit %>
+<% end %>

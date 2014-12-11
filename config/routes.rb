@@ -13,8 +13,10 @@ Rails.application.routes.draw do
       resources :poll_choices
     end
     resources :events
-    resources :blasts, except: [:destroy, :edit]
-
+    resources :blasts, except: [:destroy, :edit] do
+      resources :questions
+      post :deliver
+    end
     resources :users
     resources :citizens, only: [:index, :show]
     resources :listeners, only: [:index]

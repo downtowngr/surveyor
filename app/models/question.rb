@@ -1,8 +1,9 @@
 class Question < ActiveRecord::Base
   belongs_to :blast
-
   has_many :number_listeners, as: :listening, dependent: :destroy
-  # Responsible for collecting answer, storing it
+
+  validates :citizen_attribute, presence: true
+  validates :autoresponse, presence: true
 
   def respond_to(text, citizen)
     citizen.send(citizen_attribute + "=", text.body)

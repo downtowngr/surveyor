@@ -1,16 +1,26 @@
 <h1><%= @blast.name %></h1>
 
+
 <div class="col-6">
   <h2>Message</h2
   <p><%= @blast.message %></p>
+
+  <h2>Questions</h2>
+
+  <ul>
+  <% @questions.each do |question| %>
+    <li><%= link_to question.prompt, blast_question_path(@blast, question) %></li>
+  <% end %>
+  </ul>
+
+  <%= link_to "Create Question", new_blast_question_path(@blast), class: "btn" %>
+  <%= link_to "Send Blast", blast_deliver_path(@blast), method: :post, class: "btn" %>
 </div>
 
 <div class="col-6">
-  <h2>Sent To</h2>
+  <h2>Sending To</h2>
 
-  <ul>
-  <% @citizens.each do |c| %>
-    <li><%= link_to c.phone_number, c %></li>
-  <% end %>
-  </ul>
+  <div id="list">
+    <%= link_to @list.name, @list %>
+  </div>
 </div>
