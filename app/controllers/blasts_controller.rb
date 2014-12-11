@@ -1,29 +1,37 @@
 class BlastsController < ApplicationController
-  before_filter :get_blast, except: [:index, :new, :create]
+  before_filter :get_blast, except: [:index, :new, :create, :deliver]
 
   def index
     @blasts = Blast.all
   end
 
   def show
-    @citizens = @blast.citizens
+    @questions = @blast.questions
+    @list = @blast.list
   end
 
   def new
     @blast = Blast.new
-    @citizens = List.find(params[:list_id]).citizens
+    @list = List.find(params[:list_id])
   end
 
   def create
     @blast = Blast.new(blast_params)
 
     if @blast.save
-      SendBlastToList.perform_async(@blast.id)
       flash[:notice] = "Successfully created #{@blast.name}"
       redirect_to blast_path(@blast)
     else
       render "new"
     end
+  end
+
+  def deliver
+    @blast = Blast.find(params[:blast_id])
+
+    SendBlastToList.perform_async(@blast.id)
+    flash[:notice] = "Successfully sent #{@blast.name}"
+    redirect_to blast_path(@blast)
   end
 
   private

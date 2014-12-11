@@ -21,6 +21,7 @@ gem "jbuilder"
 gem "sidekiq"
 gem "sinatra", ">= 1.3.0", require: nil
 gem "interactor-rails"
+gem "email_validator"
 
 group :development do
   gem "guard", require: false
